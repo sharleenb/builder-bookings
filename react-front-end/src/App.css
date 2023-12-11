@@ -23,11 +23,92 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.fa {
+  color: white;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+span {
+  margin-left: 10px;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 75px 10px 75px;
+  border-style: solid;
+  border-color: grey;
+  background-color: grey;
+  color: white;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 7em;
+  padding: 0px 75px 0px 75px;
+}
+
+.links {
+  display: flex;
+  margin-right: 0px;
+}
+
+button {
+  border-style: none;
+  background-color: white;
+  color: black;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 8.4em;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+.team-page {
+  margin-right: 75px;
+  margin-left: 75px;
+}
+
+.team-header {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  display: block;
+  height: auto;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 80%; 
+  left: 0%; 
+  background-color: #6f6c6c;
+  opacity: 0.7;
+  width: 240px;
+  height: 57px;
+}
+
+.overlay-text p {
+  color: rgb(255, 255, 255); 
+  font-size: 17px; 
+  font-weight: 500;
+  text-align: left;
+  margin-block-start: 5px;
+  margin-block-end: 2px;
+  margin-inline-start: 5px;
 }
