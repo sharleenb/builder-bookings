@@ -19,7 +19,7 @@ export default function Header() {
       </div>
     </div>
     <div className="navigation">
-        <img class="logo" src="logo.png" width={125} height={80}></img>
+        <img class="logo" src="logo.png" width={125} height={80} alt="logos"></img>
         <div className="links">
         <a href="/homes">
           <button>Homes</button>

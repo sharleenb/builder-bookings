@@ -112,3 +112,20 @@ button:hover {
   margin-block-end: 2px;
   margin-inline-start: 5px;
 }
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.project-wrapper {
+  border-style: solid;
+  padding: 5px;
+  margin-right: 15px;
+  margin-bottom: 2em;
+  width: 20vw;
+  height: 25vh;
+}

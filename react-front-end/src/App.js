@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from "react";
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -10,9 +11,13 @@ import Team from './components/Team';
 import Guide from './components/Guide';
 import Contact from './components/Contact';
 import Header from './components/Header';
+import ProjectDetails from './components/ProjectDetails';
 
 
 function App() {
+
+  const [click, handleClick] = useState(0);
+  
 return(
   <BrowserRouter>
   <Header />
@@ -23,6 +28,7 @@ return(
     <Route exact path="/team" element={<Team />}></Route>
     <Route exact path="/guide" element={<Guide />}></Route>
     <Route exact path="/contact" element={<Contact />}></Route>
+    <Route path="/project/:id" element={<ProjectDetails handleClick={handleClick} click={click}/>} />
   </Routes>
   </BrowserRouter>
 

@@ -17,7 +17,7 @@ export default function Team() {
 
         <h3>Real Estate Experts</h3>
         <div className="image-container"> 
-        <img src="AliSyed.jpeg" width='250' height='300' className="member-photo"></img>
+        <img src="AliSyed.jpeg" width='250' height='300' className="member-photo" alt="member"></img>
         <div className="overlay-text">
           <p>Ali Syed <br></br> 
             Sales Representative</p>

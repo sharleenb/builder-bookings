@@ -17,3 +17,8 @@ CREATE TABLE projects (
   amenities TEXT 
 )
 
+CREATE TABLE pictures (
+  id serial PRIMARY KEY, 
+  project_id INTEGER REFERENCES projects(id),
+  image_url VARCHAR (255) NOT NULL
+);
