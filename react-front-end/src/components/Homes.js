@@ -6,8 +6,6 @@ import axios from 'axios';
 
 export default function Homes() {
   const [data, setData] = useState([]);
-  const [pictures, setPictures] = useState([]);
-
 
   useEffect(() => {
     axios.get('/api/homes')
@@ -31,7 +29,13 @@ export default function Homes() {
       {data.map((project) => (
         <div class="project-wrapper">
             <div class="project-details" ></div>
-            {/* <img class="project-image" src={firstPicture.image_url} onClick={() => handleClick(project.id)}/> */}
+            <img class="thumbnail-image" src={project.thumbnail} onClick={() => handleClick(project.id)}/>
+            <div class="overlay">
+            <div>{project.project_name}</div>
+              <div>{project.status}</div>
+              <div>{project.price}</div>
+              <div>{project.address} {project.city}, {project.province}</div>
+            </div>
             <div class="project-name" onClick={() => handleClick(project.id)}>{project.project_name}</div>
             <div>{project.city}, {project.province}</div>
             <div>{project.status}</div>

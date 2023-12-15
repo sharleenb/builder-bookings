@@ -16,6 +16,9 @@ export default function ProjectDetails() {
       setData(correctProject);
     })
   })
+
+  const photoList = data.photos || [];
+
   return (
     <div>
     <h1>{data.project_name}</h1>
@@ -34,7 +37,11 @@ export default function ProjectDetails() {
       <li>Maintenance Fees: {data.maintenance_fees}</li>
       <li>Amenities: {data.amenities}</li>
     </ul>
-
+    <div className="photo-container">
+    {photoList.map((photo, index) => (
+      <img key={index} src={photo} alt={index}></img>
+    ))}
+    </div>
     <div></div>
     </div>
     </div>

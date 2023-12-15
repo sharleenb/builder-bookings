@@ -14,11 +14,8 @@ CREATE TABLE projects (
   num_storeys VARCHAR(255), 
   parking VARCHAR(255), 
   maintenance_fees VARCHAR(255), 
-  amenities TEXT 
+  amenities TEXT, 
+  thumbnail VARCHAR (255),
+  photos TEXT ARRAY
 )
 
-CREATE TABLE pictures (
-  id serial PRIMARY KEY, 
-  project_id INTEGER REFERENCES projects(id),
-  image_url VARCHAR (255) NOT NULL
-);
