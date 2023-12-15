@@ -20,13 +20,13 @@ export default function ProjectDetails() {
   const photoList = data.photos || [];
 
   return (
-    <div>
+    <div class="page-layout">
     <h1>{data.project_name}</h1>
-    <div class="project-detail">
     <h3>Builder</h3>
     <div>{data.builder}</div>
     <div>{data.about_builder}</div>
     <h3>Project Details</h3>
+    <div class="details-photos">
     <ul>
       <li>Project Type: {data.project_type}</li>
       <li>Status: {data.status}</li>

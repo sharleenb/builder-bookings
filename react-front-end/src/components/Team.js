@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Team() {
   return (
-    <div className="team-page">
+    <div className="page-layout">
       <div className="team-header">
         <h1>Meet our Team!</h1>
       </div>
@@ -17,11 +17,18 @@ export default function Team() {
 
         <h3>Real Estate Experts</h3>
         <div className="image-container"> 
-        <img src="AliSyed.jpeg" width='250' height='300' className="member-photo" alt="member"></img>
-        <div className="overlay-text">
-          <p>Ali Syed <br></br> 
-            Sales Representative</p>
-        </div>
+        <img src="AliSyed.jpeg" className="member-photo" alt="member"></img>
+        <figcaption>
+        <div>Ali Syed</div>
+        <div>Sales Representative</div>
+        </figcaption>
+          <div class="overlay">
+          <p>Real Estate Expert</p>
+          <p>(647)221 - 4949</p>
+          <p>info@builderbookings.ca</p>
+          <p>Languages Spoken: English, Urdu, Hindi</p>
+          <p>View More</p>
+          </div>
         </div>
         <h3>Mortgage Specialists</h3>
         <h3>Lawyers</h3>
