@@ -1,6 +1,23 @@
 import React from "react";
+import Button from "./Button"
+import { useState } from "react";
 
 export default function Header() {
+
+  // need to figure out the styling for selected button
+  
+  const [style, setStyle] = useState("button");
+ 
+    const changeStyle = () => {
+        console.log("you just clicked");
+        if (style !== "button") {
+        setStyle("button")
+       } else {
+        setStyle("props.selected")
+      }
+    };
+
+
   return (
     <>
     <div className="header-wrapper">
@@ -20,12 +37,12 @@ export default function Header() {
     </div>
     <div className="navigation">
         <img class="logo" src="logo.png" width={125} height={80} alt="logos"></img>
-        <div className="links">
+        <div className='links'>
         <a href="/homes">
-          <button>Homes</button>
+          <Button className={style} onClick={() => changeStyle}>Homes</Button>
         </a>
         <a href="/condos">
-          <button>Condos</button>
+          <button className={style} onClick={() => changeStyle}>Condos</button>
         </a>
         <a href="/team">
           <button>Team</button>

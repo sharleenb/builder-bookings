@@ -44,7 +44,8 @@ span {
 }
 
 .navigation {
-
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,6 +71,10 @@ button {
 button:hover {
   background-color: black;
   color: white;
+}
+
+.button-selected {
+  background-color: rgb(181, 22, 22);
 }
 
 .team-header {

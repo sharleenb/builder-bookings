@@ -31,6 +31,22 @@ const getHomes = function () {
   })
 }
 
+const getCondos = function () {
+  return new Promise((resolve, reject) => {
+    const statement = "SELECT * FROM projects WHERE project_type='Condos';";
+
+    pool
+    .query(statement)
+    .then((result) => {
+      resolve(result.rows);
+    })
+    .catch((err) => {
+      console.error("Error executing query:", err);
+      reject(err)
+    })
+  })
+}
+
 const getPictures = function () {
   return new Promise((resolve, reject) => {
     const statement = "SELECT * FROM pictures;"
@@ -47,5 +63,6 @@ const getPictures = function () {
 module.exports = {
   getProjects,
   getHomes, 
+  getCondos,
   getPictures
 }

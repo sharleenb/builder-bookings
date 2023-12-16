@@ -1,7 +1,7 @@
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
-const { getHomes, getProjects, getPictures } = require('./helpers');
+const { getHomes, getProjects, getCondos, getPictures } = require('./helpers');
 const PORT = 8080;
 
 // Express Configuration
@@ -25,6 +25,16 @@ App.listen(PORT, () => {
 
 App.get('/api/homes', (req, res) => {
   getHomes()
+  .then((result) => {
+    res.json(result);
+  })
+  .catch((error) => {
+    res.status(500).json({error: "Internal Server Error"});
+  })
+})
+
+App.get('/api/condos', (req, res) => {
+  getCondos()
   .then((result) => {
     res.json(result);
   })
