@@ -5,14 +5,43 @@ import axios from 'axios';
 
 
 export default function Condos() {
-  const [data, setData] = useState([]);
+  const [condos, setCondos] = useState([]);
+  const [builders, setBuilders] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [filters, setFilters] = useState({
+    city: '', 
+    status: '', 
+    builder: ''
+  });
 
   useEffect(() => {
     axios.get('/api/condos')
     .then((result) => {
-      setData(result.data);
+      const res = result.data.filter((element) => 
+      (((filters.city === '') || element.city === filters.city) && 
+      ((filters.status === '') || element.status === filters.status) && 
+      ((filters.builder === '') || element.builder === filters.builder)))
+      setCondos(res)
     })
-  }, [])
+  }, [filters]);
+
+  useEffect(() => {
+    axios.get('/api/condo/builders')
+    .then((result) => {
+      setBuilders(result.data.map((element) => element.builder))
+    })
+  }, [filters])
+
+  useEffect(() => {
+    axios.get('/api/condo/locations')
+    .then((result) => {
+      setCities(result.data.map((element) => element.city))
+    })
+  })
+
+  const handleFilterChange = (filterName, value) => {
+    setFilters({...filters, [filterName]: value})
+  }
 
   const navigate = useNavigate();
 
@@ -22,11 +51,34 @@ export default function Condos() {
 
   return (
     <div class="page-layout">
-    <h2 class="project-title">Homes</h2>
-    {/* filter here */}
+    <h2 class="project-title">Condos</h2>
+    <div class="filter-div">
+
+      <select name="city" onChange={(e) => handleFilterChange('city', e.target.value)}>
+      <option value="">Location</option>
+        {cities.map((city) => 
+        <option value={city}>{city}</option>)}
+     </select>
+
+
+      <select name="status" onChange={(e) => handleFilterChange('status', e.target.value)}>
+      <option value="">Status</option>
+        <option value="SOLD OUT">SOLD OUT</option>
+        <option value="NOW SELLING">NOW SELLING</option>
+     </select>
+
+
+      <select name="builder" onChange={(e) => handleFilterChange('builder', e.target.value)}>
+      <option value="">Builder</option>
+        {builders.map((builder) => 
+        <option value={builder}>{builder}</option>)}
+     </select>
+
+      
+    </div>
     <h4>Featured Properties</h4>
     <div class="projects">
-      {data.map((project) => (
+      {condos.map((project) => (
         <div class="project-wrapper" onClick={() => handleClick(project.id)}>
             <img class="thumbnail-image" src={project.thumbnail} />
             <div class="overlay">

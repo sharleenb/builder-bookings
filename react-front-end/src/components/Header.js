@@ -24,7 +24,7 @@ export default function Header() {
       <div className="contact-info">
         <span>1(289)630 - 4900</span>
         <span> || </span>
-        <span>
+        <span id='email-link'>
         <a class="fa" href="mailto:info@builderbookings.ca">info@builderbookings.ca</a>
         </span>
       </div>
@@ -36,7 +36,9 @@ export default function Header() {
       </div>
     </div>
     <div className="navigation">
-        <img class="logo" src="logo.png" width={125} height={80} alt="logos"></img>
+        <a href="/"> <img class="logo" src="logo.png" width={125} height={80} alt="logos"></img>
+        </a>
+        
         <div className='links'>
         <a href="/homes">
           <Button className={style} onClick={() => changeStyle}>Homes</Button>

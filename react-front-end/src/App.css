@@ -29,7 +29,7 @@
   margin-right: 30px;
 }
 
-span {
+#email-link {
   margin-left: 10px;
 }
 
@@ -161,3 +161,46 @@ figcaption {
   height: 200px;
 }
 
+.footer-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.quick-links, .footer-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.footer-contact span {
+  margin-left: 0px;
+  margin-bottom: 3px;
+}
+
+.newsletter {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(208, 51, 51);
+  color: antiquewhite;
+  padding: 20px 10%;
+}
+
+.subscribe {
+  display: flex;
+  align-items: center;
+}
+
+.contact-page {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 200px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-image{
+  width: 100vw;
+  height: 400px;
+}

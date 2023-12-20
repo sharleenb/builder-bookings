@@ -12,7 +12,9 @@ import Guide from './components/Guide';
 import Contact from './components/Contact';
 import Header from './components/Header';
 import ProjectDetails from './components/ProjectDetails';
-
+import Footer from './components/Footer';
+import Terms from './components/Terms';
+import Privacy from './components/Privacy'
 
 function App() {
 
@@ -28,45 +30,14 @@ return(
     <Route exact path="/team" element={<Team />}></Route>
     <Route exact path="/guide" element={<Guide />}></Route>
     <Route exact path="/contact" element={<Contact />}></Route>
+    <Route exact path="/terms" element={<Terms />}></Route>
+    <Route exact path="/privacy-policy" element={<Privacy />}></Route>
     <Route path="/project/:id" element={<ProjectDetails handleClick={handleClick} click={click}/>} />
   </Routes>
+  <Footer />
   </BrowserRouter>
 
 )
 }
 
 export default App;
-// class App extends Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       message: 'Click the button to load data!'
-//     }
-//   }
-
-//   fetchData = () => {
-//     axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-//     .then((response) => {
-//       // handle success
-//       console.log(response.data) // The entire response from the Rails API
-
-//       console.log(response.data.message) // Just the message
-//       this.setState({
-//         message: response.data.message
-//       });
-//     }) 
-//   }
-
-//   render() {
-//     return (
-//       <div className="App">
-//         <h1>{ this.state.message }</h1>
-//         <button onClick={this.fetchData} >
-//           Fetch Data
-//         </button>        
-//       </div>
-//     );
-//   }
-// }
-
-
