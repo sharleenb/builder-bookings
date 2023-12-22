@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import SignUp from "./SignUp";
 
 export default function Home() {
   const [homes, setHomes] = useState([]);
   const [condos, setCondos] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => setModalIsOpen(true)
+  const closeModal = () => setModalIsOpen(false)
 
   useEffect(() => {
     axios.get("/api/five/homes").then((result) => {
@@ -26,22 +31,28 @@ export default function Home() {
 
   return (
     <div>
-      <div>
-        <img
-          src="http://builderbookings.ca/wp-content/uploads/2019/12/thumb-1920-942321.jpg"
-          class="home-image"
-        ></img>
-        <div>
-          <p>Find Your Brand New Home</p>
-          <p>Sign up and get first VIP & Platinum access</p>
+      <div class="home-container">
+        <img src="http://builderbookings.ca/wp-content/uploads/2019/12/thumb-1920-942321.jpg" class="home-image" alt="home-image"></img>
+          <div class="top">Find Your Brand New Home</div>
+          <div class="middle">Sign up and get first VIP & Platinum access</div>
           {/* pop up modal for sign up link */}
-          <a href="#">Sign Up Now</a>
-          {/* jump to specific part of page */}
-          <a>View Homes</a>
-          <a>View Condos</a>
-
+          <div class="bottom">
+            <div class="modal">
+            <button id="bottom-link" class="fa fa-paper-plane" onClick={openModal}>SIGN UP NOW</button>
+            <SignUp isOpen={modalIsOpen} closeModal={closeModal}>
+              <p> Modal content here</p>
+            </SignUp>
+            </div>
+          <a id="bottom-link" class="fa fa-home" href="#homes">
+          VIEW HOMES</a>
+          <a id="bottom-link" class="fa fa-building" href="#condos">
+          VIEW CONDOS</a>
+          </div>
+        </div>
+        
           <div>
-            <h4>Homes</h4>
+            <h4>
+              <a id="homes">Homes</a></h4>
             <div class="projects">
               {homes.map((project) => (
                 <div
@@ -69,7 +80,8 @@ export default function Home() {
           </div>
 
           <div>
-            <h4>Condos</h4>
+            <h4>
+              <a id="condos">Condos</a></h4>
             <div class="projects">
               {condos.map((project) => (
                 <div
@@ -96,7 +108,5 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 }

@@ -4,8 +4,7 @@ export default function Footer() {
   return (
     <div class="page-layout">
       <div class="newsletter">
-        <i class="fa-solid fa-paper-plane"></i>
-        <p>Sign up to get first access <br></br> You will be notified as soon as new listings are added</p>
+        <p class="fa fa-paper-plane">Sign up to get first access <br></br> You will be notified as soon as new listings are added</p>
         <div class='subscribe'>
         <input
           type="email"

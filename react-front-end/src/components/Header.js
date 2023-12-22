@@ -41,19 +41,19 @@ export default function Header() {
         
         <div className='links'>
         <a href="/homes">
-          <Button className={style} onClick={() => changeStyle}>Homes</Button>
+          <button className="nav-btn" onClick={() => changeStyle}>Homes</button>
         </a>
         <a href="/condos">
-          <button className={style} onClick={() => changeStyle}>Condos</button>
+          <button className="nav-btn" onClick={() => changeStyle}>Condos</button>
         </a>
         <a href="/team">
-          <button>Team</button>
+          <button className="nav-btn">Team</button>
         </a>
         <a href="/guide">
-          <button>Quick Guide</button>
+          <button className="nav-btn">Quick Guide</button>
         </a>
         <a href="/contact">
-          <button>Contact</button>
+          <button className="nav-btn">Contact</button>
         </a>
         </div>
       </div>

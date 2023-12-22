@@ -29,6 +29,7 @@
   margin-right: 30px;
 }
 
+
 #email-link {
   margin-left: 10px;
 }
@@ -45,6 +46,7 @@
 
 .navigation {
   position: sticky;
+  z-index: 99;
   top: 0;
   display: flex;
   justify-content: space-between;
@@ -59,7 +61,7 @@
   margin-right: 0px;
 }
 
-button {
+.nav-btn {
   border-style: none;
   background-color: white;
   color: black;
@@ -68,13 +70,9 @@ button {
   height: 8.4em;
 }
 
-button:hover {
+.nav-btn:hover {
   background-color: black;
   color: white;
-}
-
-.button-selected {
-  background-color: rgb(181, 22, 22);
 }
 
 .team-header {
@@ -204,3 +202,120 @@ figcaption {
   width: 100vw;
   height: 400px;
 }
+
+.home-container {
+  position: relative;
+  text-align: center;
+}
+
+.top {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 30px;
+}
+
+.middle {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: yellow;
+  font-size: 20px;
+}
+
+.bottom {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+}
+
+#bottom-link {
+  color: white;
+  border: solid;
+  border-color: rgb(81, 81, 81);
+  background-color: rgb(81, 81, 81);
+  margin-right: 25px;
+  padding: 10px 5%;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.quick-guide h2 {
+  text-align: center;
+}
+
+.acc-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 50vh;
+  max-width: 45vw;
+}
+
+.faq-accordion {
+  position: relative;
+  border: solid darkgrey;
+  padding: 13px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  text-align: left;
+}
+
+.accordion-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.accordion-symbol {
+  border: solid black;
+  border-right-width: 0.5em;
+  border-left-width: 0.5em;
+  background-color: black;
+  color: white;
+}
+
+.faq-accordion:hover{
+  background-color: rgb(223, 222, 222);
+  color: rgb(208, 51, 51);
+}
+
+.panel {
+  position: absolute;
+  display: contents;
+  top: 100%;
+  padding: 0 18px;
+  background-color: white;
+  color: black;
+}
+
+.quick-guide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.help {
+  width: 30%;
+  height:50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30px;
+}
+
+/*  transition: all 0.4s ease; */
+
+
+
+
