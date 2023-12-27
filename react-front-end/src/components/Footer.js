@@ -26,15 +26,16 @@ export default function Footer() {
           height={100}
           alt="logos"
         ></img>
+
         <div class="quick-links">
-          <h4>Quick Links</h4>
+        <h4 class="footer-title">QUICK LINKS</h4>
           <a href="/terms">Terms of Use</a>
           <a href="/privacy-policy">Privacy Policy</a>
           <a href="/contact">Contact</a>
         </div>
 
         <div class="footer-contact">
-          <h4>Contact Us</h4>
+        <h4 class="footer-title">CONTACT US</h4>
           <span>1-10045 Hurontario St, Brampton, ON</span>
           <span>Phone: +1 (905) 793 - 5000</span>
           <span>Mobile: +1 (647) 221 - 4949</span>
@@ -42,7 +43,7 @@ export default function Footer() {
           <span>
             {" "}
             Email:
-            <a href="mailto:info@builderbookings.ca">
+            <a href="mailto:info@builderbookings.ca"> 
               info@builderbookings.ca
             </a>{" "}
           </span>

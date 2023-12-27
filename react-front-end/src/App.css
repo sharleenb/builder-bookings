@@ -2,12 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,7 +22,6 @@
   text-decoration: none;
   margin-right: 30px;
 }
-
 
 #email-link {
   margin-left: 10px;
@@ -54,6 +47,7 @@
   background-color: white;
   height: 7em;
   padding: 0px 75px 0px 75px;
+  box-shadow: 2px 0px 3px darkgrey;
 }
 
 .links {
@@ -92,9 +86,38 @@
   height: auto;
 }
 
+.filter-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.filter-div select {
+  width: 170px;
+  height: 40px;
+  border-color: rgb(152, 150, 150);
+  color: rgb(152, 150, 150);
+}
+
+.reset {
+  cursor: pointer;
+  background-color: rgb(220, 220, 220);
+  border: none;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .projects {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.home-projects {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   margin-left: 4em;
   margin-right: 4em;
@@ -111,9 +134,12 @@ figcaption {
   padding: 9px;
 }
 
+
 .project-wrapper, .image-container {
   position: relative;
   border-style: solid;
+  border-color: darkgray;
+  border-width: 1px;
   margin-right: 15px;
   margin-bottom: 2em;
   width: 250px;
@@ -137,14 +163,18 @@ figcaption {
   width: 100%;
   height: 0;
   transition: .5s ease;
-
 }
+
 .project-wrapper:hover .overlay, .image-container:hover .overlay{
   bottom: 0;
   height: 100%;
   color: white;
 }
 
+.project-wrapper:hover figcaption, .image-container:hover figcaption {
+  visibility: hidden;
+  /* transition: .5s ease; */
+}
 .page-layout {
  margin: 5em; 
 }
@@ -154,9 +184,52 @@ figcaption {
   flex-direction: row;
 }
 
+.photo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5em;
+}
+
 .photo-container img {
-  width: 250px;
+  position: relative;
+  width: 300px;
   height: 200px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-hidden {
+  display: none;
+}
+
+#arrow {
+  color: black;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.fa-long-arrow-left {
+  padding-right: 15px;
+}
+
+.fa-long-arrow-right {
+  padding-left: 15px;
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+}
+
+.property-map iframe {
+  margin-left: 5em;
+  width: 450px;
+  height: 300px;
 }
 
 .footer-details {
@@ -167,12 +240,24 @@ figcaption {
 .quick-links, .footer-contact {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.quick-links:hover {
+  color: #6f9a37;
 }
 
 .footer-contact span {
   margin-left: 0px;
   margin-bottom: 3px;
+}
+
+.footer-details img {
+  margin-top: 40px;
+}
+
+.footer-title {
+  color: #6f9a37;
 }
 
 .newsletter {
@@ -198,9 +283,27 @@ figcaption {
   flex-direction: column;
 }
 
+.contact-map {
+  margin-top: 3em;
+}
+
+.contact-map iframe {
+  width: 100%;
+}
+
 .home-image{
-  width: 100vw;
-  height: 400px;
+  backface-visibility: hidden;
+  background-color: rgba(255,255,255,0);
+  background-attachment: fixed;
+  background-position-x: 50%;
+  background-position-y: 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(http://builderbookings.ca/wp-content/uploads/2019/12/thumb-1920-942321.jpg);
+  box-sizing: border-box;
+  width: 100%;
+  height: 90vh;
+  position: relative;
 }
 
 .home-container {
@@ -210,28 +313,36 @@ figcaption {
 
 .top {
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 30px;
+  font-size: 31px;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgb(114, 114, 114);
 }
 
 .middle {
   position: absolute;
-  top: 48%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: yellow;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
 }
 
 .bottom {
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-behavior: smooth;
 }
 
 #bottom-link {
@@ -240,13 +351,40 @@ figcaption {
   border-color: rgb(81, 81, 81);
   background-color: rgb(81, 81, 81);
   margin-right: 25px;
-  padding: 10px 5%;
+  padding: 11px 6px;
   font-size: 14px;
+  width: 150px;
+  cursor: pointer;
+}
+
+#view-more {
+  float: right;
+  color: white;
+  border: solid;
+  border-color: rgb(81, 81, 81);
+  background-color: rgb(81, 81, 81);
+  margin-right: 25px;
+  padding: 11px 6px;
+  font-size: 14px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#bottom-link:hover, #view-more:hover {
+  color: white;
+  border-color:rgb(208, 51, 51);
+  background-color: rgb(208, 51, 51);
 }
 
 a {
   text-decoration: none;
   color: black;
+}
+
+.home-title {
+  margin-top: 2em;
+  text-align: center;
 }
 
 .quick-guide h2 {
@@ -313,9 +451,6 @@ a {
   justify-content: space-between;
   margin-left: 30px;
 }
-
-/*  transition: all 0.4s ease; */
-
 
 
 

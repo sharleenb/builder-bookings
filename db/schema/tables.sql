@@ -16,6 +16,6 @@ CREATE TABLE projects (
   maintenance_fees VARCHAR(255), 
   amenities TEXT, 
   thumbnail VARCHAR (255),
-  photos TEXT ARRAY
+  photos TEXT ARRAY, 
+  map_url TEXT
 )
-

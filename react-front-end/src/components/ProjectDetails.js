@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'
 
-
 export default function ProjectDetails() {
-
   const [data, setData] = useState([]);
   const { id } = useParams();
+  const [slide, setSlide] = useState(0);
 
   useEffect(() => {
     axios.get('/api/projects')
@@ -18,6 +17,15 @@ export default function ProjectDetails() {
   })
 
   const photoList = data.photos || [];
+
+  const nextSlide = () => {
+    setSlide(slide === photoList.length - 1 ? 0 : slide + 1)
+  }
+
+  const prevSlide = () => {
+    setSlide(slide === 0 ? photoList.length - 1 : slide - 1)
+  }
+  
 
   return (
     <div class="page-layout">
@@ -37,12 +45,27 @@ export default function ProjectDetails() {
       <li>Maintenance Fees: {data.maintenance_fees}</li>
       <li>Amenities: {data.amenities}</li>
     </ul>
+    {photoList[0] ?
     <div className="photo-container">
-    {photoList.map((photo, index) => (
-      <img key={index} src={photo} alt={index}></img>
+    <div id="arrow" class="fa fa-long-arrow-left" aria-hidden="true" onClick={prevSlide}></div>
+      {photoList.map((photo, index) => (
+       <img key={index} src={photo} alt={index} class={slide === index ? "slide" : "slide slide-hidden"}></img>
     ))}
+    <div id="arrow" class="fa fa-long-arrow-right" aria-hidden="true" onClick={nextSlide}></div>
+    </div> : ''}
+
     </div>
-    <div></div>
+    <h3>Location</h3>
+    <div class="location">
+      <div class="address">
+        <h5>Address</h5>
+        {data.address}
+        <br></br>
+        {data.city}, {data.province}
+      </div>
+      {data.map_url ? <div class="property-map">
+        <iframe src={data.map_url}></iframe>
+      </div> : '' }
     </div>
     </div>
   )

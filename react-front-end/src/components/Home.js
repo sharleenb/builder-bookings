@@ -32,10 +32,10 @@ export default function Home() {
   return (
     <div>
       <div class="home-container">
-        <img src="http://builderbookings.ca/wp-content/uploads/2019/12/thumb-1920-942321.jpg" class="home-image" alt="home-image"></img>
+        <div class="home-image"></div>
+        {/* <img src="http://builderbookings.ca/wp-content/uploads/2019/12/thumb-1920-942321.jpg" class="home-image" alt="home-image"></img> */}
           <div class="top">Find Your Brand New Home</div>
           <div class="middle">Sign up and get first VIP & Platinum access</div>
-          {/* pop up modal for sign up link */}
           <div class="bottom">
             <div class="modal">
             <button id="bottom-link" class="fa fa-paper-plane" onClick={openModal}>SIGN UP NOW</button>
@@ -49,11 +49,11 @@ export default function Home() {
           VIEW CONDOS</a>
           </div>
         </div>
-        
-          <div>
-            <h4>
-              <a id="homes">Homes</a></h4>
-            <div class="projects">
+        <h1 class="home-title">Featured Pre-Construction Projects</h1>
+          <div class="page-layout">
+            <h2 class="home-title">
+              <a id="homes">Homes Now Selling</a></h2>
+            <div class="home-projects">
               {homes.map((project) => (
                 <div
                   class="project-wrapper"
@@ -77,12 +77,13 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <a id="view-more" class="fa fa-home" href="/homes">VIEW ALL HOMES</a>
           </div>
-
-          <div>
-            <h4>
-              <a id="condos">Condos</a></h4>
-            <div class="projects">
+          
+          <div class="page-layout">
+            <h2 class="home-title">
+              <a id="condos">Condos Now Selling</a></h2>
+            <div class="home-projects">
               {condos.map((project) => (
                 <div
                   class="project-wrapper"
@@ -106,7 +107,8 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+            <a id="view-more" class="fa fa-building" href="/condos">VIEW ALL CONDOS</a>
+          </div> 
         </div>
   );
 }
