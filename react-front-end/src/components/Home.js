@@ -52,14 +52,14 @@ export default function Home() {
         <h1 class="home-title">Featured Pre-Construction Projects</h1>
           <div class="page-layout">
             <h2 class="home-title">
-              <a id="homes">Homes Now Selling</a></h2>
+              <a id="homes" href='homes'>Homes Now Selling</a></h2>
             <div class="home-projects">
               {homes.map((project) => (
                 <div
                   class="project-wrapper"
                   onClick={() => handleClick(project.id)}
                 >
-                  <img class="thumbnail-image" src={project.thumbnail} />
+                  <img class="thumbnail-image" src={project.thumbnail} alt="thumbnail"/>
                   <div class="overlay">
                     <div>{project.project_name}</div>
                     <div>{project.status}</div>
@@ -82,14 +82,14 @@ export default function Home() {
           
           <div class="page-layout">
             <h2 class="home-title">
-              <a id="condos">Condos Now Selling</a></h2>
+              <a id="condos" href='condos'>Condos Now Selling</a></h2>
             <div class="home-projects">
               {condos.map((project) => (
                 <div
                   class="project-wrapper"
                   onClick={() => handleClick(project.id)}
                 >
-                  <img class="thumbnail-image" src={project.thumbnail} />
+                  <img class="thumbnail-image" src={project.thumbnail} alt="thumbnail"/>
                   <div class="overlay">
                     <div>{project.project_name}</div>
                     <div>{project.status}</div>

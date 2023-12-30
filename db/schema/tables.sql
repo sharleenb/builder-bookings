@@ -19,3 +19,15 @@ CREATE TABLE projects (
   photos TEXT ARRAY, 
   map_url TEXT
 )
+
+CREATE TABLE members (
+  id serial PRIMARY KEY, 
+  name VARCHAR(255),
+  member_type VARCHAR(255), 
+  designation VARCHAR(255), 
+  phone VARCHAR(12), 
+  email VARCHAR(255), 
+  languages VARCHAR(255), 
+  photo_url TEXT, 
+  about TEXT
+)

@@ -31,7 +31,7 @@ export default function Contact() {
       </div>
       </div>
       <div class="contact-map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d23073.256092529264!2d-79.787891!3d43.707286!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b142d71638999%3A0x292c9627cbb32680!2sRoyal%20LePage%20Credit%20Valley%20Real%20Estate!5e0!3m2!1sen!2sus!4v1703629243852!5m2!1sen!2sus" height={300} border={0} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe title="office-map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d23073.256092529264!2d-79.787891!3d43.707286!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b142d71638999%3A0x292c9627cbb32680!2sRoyal%20LePage%20Credit%20Valley%20Real%20Estate!5e0!3m2!1sen!2sus!4v1703629243852!5m2!1sen!2sus" height={300} border={0} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   )

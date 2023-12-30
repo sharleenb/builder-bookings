@@ -37,7 +37,7 @@ export default function Condos() {
     .then((result) => {
       setCities(result.data.map((element) => element.city))
     })
-  })
+  }, [])
 
   const handleFilterChange = (filterName, value) => {
     setFilters({...filters, [filterName]: value})
@@ -89,7 +89,7 @@ export default function Condos() {
     <div class="projects">
       {condos.map((project) => (
         <div class="project-wrapper" onClick={() => handleClick(project.id)}>
-            <img class="thumbnail-image" src={project.thumbnail} />
+            <img class="thumbnail-image" src={project.thumbnail} alt="thumbnail"/>
             <div class="overlay">
             <div>{project.project_name}</div>
               <div>{project.status}</div>

@@ -64,7 +64,7 @@ export default function ProjectDetails() {
         {data.city}, {data.province}
       </div>
       {data.map_url ? <div class="property-map">
-        <iframe src={data.map_url}></iframe>
+        <iframe src={data.map_url} title="location"></iframe>
       </div> : '' }
     </div>
     </div>

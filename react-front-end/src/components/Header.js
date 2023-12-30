@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "./Button"
 import { useState } from "react";
 
 export default function Header() {
@@ -29,10 +28,10 @@ export default function Header() {
         </span>
       </div>
       <div className="socials">
-      <a href="#" class="fa fa-facebook"></a>
-      <a href="#" class="fa fa-twitter"></a>
-      <a href="#" class="fa fa-instagram"></a>
-      <a href="#" class="fa fa-youtube"></a>
+      <a href="https://www.facebook.com/builderbookings" class="fa fa-facebook"> </a>
+      <a href="https://twitter.com/?lang=en" class="fa fa-twitter"> </a>
+      <a href="https://www.instagram.com/" class="fa fa-instagram"> </a>
+      <a href="https://www.youtube.com/" class="fa fa-youtube"> </a>
       </div>
     </div>
     <div className="navigation">

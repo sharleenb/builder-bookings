@@ -1,7 +1,7 @@
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
-const { getHomes, getProjects, getCondos, getHomeBuilders, getHomeLocations, getCondoBuilders, getCondoLocations, getFiveHomes, getFiveCondos } = require('./helpers');
+const { getHomes, getProjects, getCondos, getHomeBuilders, getHomeLocations, getCondoBuilders, getCondoLocations, getFiveHomes, getFiveCondos, getMembers, getMemberTypes } = require('./helpers');
 const PORT = 8080;
 
 // Express Configuration
@@ -115,6 +115,26 @@ App.get('/api/five/homes', (req, res) => {
 
 App.get('/api/five/Condos', (req, res) => {
   getFiveCondos()
+  .then((result) => {
+    res.json(result);
+  })
+  .catch((error) => {
+    res.status(500).json({error: "Internal Server Error"});
+  })
+})
+
+App.get('/api/members', (req, res) => {
+  getMembers()
+  .then((result) => {
+    res.json(result);
+  })
+  .catch((error) => {
+    res.status(500).json({error: "Internal Server Error"});
+  })
+})
+
+App.get('/api/member-types', (req, res) => {
+  getMemberTypes()
   .then((result) => {
     res.json(result);
   })
