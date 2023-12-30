@@ -1,10 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Team() {
   const [members, setMembers] = useState([]);
   const [memberTypes, setMemberTypes] = useState([]);
+
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    navigate(`/member/${id}`);
+  }; 
 
   useEffect(() => {
     axios.get('/api/members')
@@ -40,19 +47,20 @@ export default function Team() {
         {members
         .filter((member) => member.member_type === memberType)
         .map((member) => (
-        <div class="member-container">
+        <div class="member-container" onClick={() => handleClick(member.id)}>
         <div className="image-container"> 
         <img src={member.photo_url} className="member-photo" alt="member"></img>
         <figcaption>
-       <div>{member.name}</div>
+       <h4>{member.name}</h4>
         <div>{member.designation}</div>
        </figcaption>
         <div class="overlay">
-        <p>{member.member_type}</p>
-        <p>{member.phone}</p>
-        <p>{member.email}</p>
-        <p>Languages Spoken: {member.languages}</p>
-        <p>View More</p>
+        <h2>{member.name}</h2>
+        <span>{member.member_type}</span>
+        <span>{member.phone}</span>
+        <span>{member.email}</span>
+        <span>Languages Spoken: {member.languages}</span>
+        <span>View More</span>
         </div>
       </div>
       </div>

@@ -91,8 +91,8 @@ export default function Condos() {
         <div class="project-wrapper" onClick={() => handleClick(project.id)}>
             <img class="thumbnail-image" src={project.thumbnail} alt="thumbnail"/>
             <div class="overlay">
-            <div>{project.project_name}</div>
-              <div>{project.status}</div>
+            <h4>{project.project_name}</h4>
+              <div className="status">{project.status}</div>
               <div>{project.price}</div>
               <div>{project.address} {project.city}, {project.province}</div>
             </div>

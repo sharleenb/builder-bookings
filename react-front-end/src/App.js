@@ -14,6 +14,7 @@ import ProjectDetails from './components/ProjectDetails';
 import Footer from './components/Footer';
 import Terms from './components/Terms';
 import Privacy from './components/Privacy'
+import MemberDetail from './components/MemberDetail';
 
 function App() {
 
@@ -32,6 +33,7 @@ return(
     <Route exact path="/terms" element={<Terms />}></Route>
     <Route exact path="/privacy-policy" element={<Privacy />}></Route>
     <Route path="/project/:id" element={<ProjectDetails handleClick={handleClick} click={click}/>} />
+    <Route path="/member/:id" element={<MemberDetail handleClick={handleClick} click={click}/>} />
   </Routes>
   <Footer />
   </BrowserRouter>
