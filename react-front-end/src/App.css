@@ -304,16 +304,37 @@ figcaption {
 }
 
 .newsletter {
+  background-color: rgba(216,36,96,1);
+  height: 170px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: rgb(208, 51, 51);
-  color: antiquewhite;
-  padding: 20px 10%;
+  align-items: center;
+  padding: 0 70px;
+  box-sizing: border-box;
 }
 
-.subscribe {
+.newsletter iframe { 
+  box-sizing: border-box;
+  margin-bottom: 60px;
+  width: 510px;
+  padding: 0px;
+}
+
+.newsletter-p {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: white;
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: large;
+}
+
+.newsletter-p p {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .contact-page {
