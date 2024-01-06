@@ -7,8 +7,10 @@ export default function Guide() {
 
   return (
     <div class="page-layout">
-      <h2>Quick Guide</h2>
+      <div class="page-title">
+      <h1>Quick Guide</h1>
       <p>Below you will find the most frequently asked questions. You can also use the Help section to send us your query for a quick response from us</p>
+      </div>
       <div class="quick-guide">
       <div class="faqs">
       <h2>FAQ's</h2>
@@ -19,13 +21,8 @@ export default function Guide() {
       </div>
       </div>
       <div class="help">
-        <h2>Help</h2>
-        <div>Couldn’t find an answer to your question? Please send us a request below and our team member will get in touch with you shortly.</div>
-        <input placeholder="Your Name"/>
-        <input placeholder="Your Email"/>
-        <input placeholder="Phone Number"/>
-        <input placeholder="Message"/>
-        <input type="submit"/> 
+      <iframe title="help-form" width="400" height="650" src="https://5e2f5826.sibforms.com/serve/MUIFAPxboNLITgF4JuTNyT95kbNp36FJ2wYItZaHy1ryMOPT1CdsanxsU5W8v6R9zOtijEgGTafsZkRWmhXP9y7vxzVndRz46055aEVU5fyJs7FGW72aVsm5U9E8BIJhV8L7n1fXAdO3_7FG7EkQLG3nFE0M1ra9VgWb4CjjO4EaX_Z_nvfDAZjinkT3nuc1KsET3jRAc6terPTf" frameborder="0" scrolling="no" allowfullscreen ></iframe>
+    
       </div>
       </div>
     </div>

@@ -1,21 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 .fa {
   color: white;
@@ -32,8 +14,8 @@
   justify-content: space-between;
   padding: 10px 75px 10px 75px;
   border-style: solid;
-  border-color: grey;
-  background-color: grey;
+  border-color: #656565;
+  background-color: #656565;
   color: white;
 }
 
@@ -121,7 +103,7 @@
 
 .filter-div {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .filter-div select {
@@ -129,6 +111,7 @@
   height: 40px;
   border-color: rgb(152, 150, 150);
   color: rgb(152, 150, 150);
+  margin-right: 40px;
 }
 
 .reset {
@@ -139,12 +122,21 @@
   padding-left: 15px;
 }
 
+.featured-heading {
+  margin-left: 6em;
+}
+
+.filter-heading {
+  margin-left: 7em;
+}
+
 .projects {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin-left: 4em;
   margin-right: 4em;
+  padding: 0px 30px 0px 45px;
 }
 
 .home-projects {
@@ -177,6 +169,7 @@ figcaption {
   margin-bottom: 2em;
   width: 250px;
   height: 200px;
+  cursor: pointer;
 }
 
 .project-wrapper img, .image-container img {
@@ -342,9 +335,35 @@ figcaption {
   justify-content: space-between;
   padding-right: 200px;
 }
-.contact-form {
+
+.agent-list {
+  margin-top: 2.2em;
+  font-size: large;
   display: flex;
   flex-direction: column;
+}
+
+.agent-detail {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.info {
+  display: flex;  
+  align-items: flex-end;
+}
+
+.fa-phone, .fa-envelope-o, .fa-map {
+  color: black;
+  margin-right: 5px;
+}
+
+.office-detail div, .agent-detail div {
+  margin-bottom: 15px;
+}
+
+.office-detail h3{
+  color: rgba(216,36,96,1);
 }
 
 .contact-map {
@@ -441,6 +460,10 @@ figcaption {
   background-color: rgb(208, 51, 51);
 }
 
+.modal-comp {
+  z-index: 100;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -451,7 +474,12 @@ a {
   text-align: center;
 }
 
+.page-title {
+  text-align: center;
+}
+
 .quick-guide h2 {
+  margin-top: 3.5em;
   text-align: center;
 }
 
@@ -509,11 +537,7 @@ a {
 
 .help {
   width: 30%;
-  height:50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 

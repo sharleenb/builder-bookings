@@ -33,14 +33,12 @@ export default function Home() {
     <div>
       <div class="home-container">
         <div class="home-image"></div>
-        {/* <img src="http://builderbookings.ca/wp-content/uploads/2019/12/thumb-1920-942321.jpg" class="home-image" alt="home-image"></img> */}
           <div class="top">Find Your Brand New Home</div>
           <div class="middle">Sign up and get first VIP & Platinum access</div>
           <div class="bottom">
             <div class="modal">
             <button id="bottom-link" class="fa fa-paper-plane" onClick={openModal}>SIGN UP NOW</button>
             <SignUp isOpen={modalIsOpen} closeModal={closeModal}>
-              <p> Modal content here</p>
             </SignUp>
             </div>
           <a id="bottom-link" class="fa fa-home" href="#homes">
@@ -61,8 +59,8 @@ export default function Home() {
                 >
                   <img class="thumbnail-image" src={project.thumbnail} alt="thumbnail"/>
                   <div class="overlay">
-                    <div>{project.project_name}</div>
-                    <div>{project.status}</div>
+                  <h4>{project.project_name}</h4>
+                    <div className="status">{project.status}</div>
                     <div>{project.price}</div>
                     <div>
                       {project.address} {project.city}, {project.province}
@@ -91,8 +89,8 @@ export default function Home() {
                 >
                   <img class="thumbnail-image" src={project.thumbnail} alt="thumbnail"/>
                   <div class="overlay">
-                    <div>{project.project_name}</div>
-                    <div>{project.status}</div>
+                  <h4>{project.project_name}</h4>
+                    <div className="status">{project.status}</div>
                     <div>{project.price}</div>
                     <div>
                       {project.address} {project.city}, {project.province}

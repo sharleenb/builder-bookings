@@ -57,8 +57,8 @@ export default function Homes() {
 
   return (
     <div class="page-layout">
-      <h2 class="project-title">Homes</h2>
-      <h3>Filter By</h3>
+      <h1 class="page-title">Homes</h1>
+      <h4 class="filter-heading">Filter By</h4>
       <div class="filter-div">
         <select
           name="city"
@@ -97,7 +97,7 @@ export default function Homes() {
         </button>
       </div>
 
-      <h4>Featured Properties</h4>
+      <h3 class="featured-heading">Featured Properties</h3>
       <div class="projects">
         {homes.map((project) => (
           <div class="project-wrapper" onClick={() => handleClick(project.id)}>

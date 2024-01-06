@@ -3,31 +3,37 @@ import React from "react";
 export default function Contact() {
   return (
     <div class='page-layout'>
-      <h2>Contact</h2>
+      <h1 class="page-title">Contact</h1>
       <div class='contact-page'>
       <div class="contact-form">
-        <h4>Let's get in touch.</h4>
-        <form class='contact-form'>
-          <label>Your Name (required)</label>
-          <input></input>
-          <label>Your Email (required)</label>
-          <input></input>
-          <label>Subject</label>
-          <input></input>
-          <label>Your Message</label>
-          <textarea></textarea>
-          <input type="submit"></input>
-        </form>
+      <iframe title="contact-form" width="640" height="705" src="https://5e2f5826.sibforms.com/serve/MUIFAMnvyrLOGnVvlg-fL_NaC4papZyoda4I7eOPudFYZGCJI_n-G5_OMr4ET_J9tbs-elzX88JUkhOD4B-OCH1whl6GHS9KMLb_oK6VcWR6bBBbGV-mbVviou1kRj7FJp-ttvgB1YpIxJs6JJKic6EM-Z3tOcX6e7SzkCi5nlC2lcasDIz2mroUXfKD7bYkirTXUgKpdh57Ls3u" frameborder="0" scrolling="no" allowfullscreen ></iframe>
       </div>
       <div class="agent-list">
-        <h4>Agents</h4>
-        <div>ALI SYED</div>
-        <div>Sales Representative</div>
-        <div>(647) 221 4949</div>
+        <h2>Agents</h2>
+        <div class="agent-detail">
+          <div><strong>ALI SYED</strong></div>
+          <div>Sales Representative</div>
+          <div class="info">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span>(647) 221-4949</span>
+          </div>
+          
+        </div>
+        
         <br></br>
-        <div>Royal LePage Credit Valley Real Estate</div>
-        <div>1-10045 Hurontario St, Brampton, ON L6Z 0E6</div>
-        <div>info@builderbookings</div>
+        <div class="office-detail">
+          <h3>Royal LePage Credit Valley Real Estate</h3>
+          <div class="info">
+            <i class="fa fa-map" aria-hidden="true"></i>
+            <span>1-10045 Hurontario St, Brampton, ON L6Z 0E6</span>
+          </div>
+          <div class="info">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <span>info@builderbookings</span>
+          </div>
+          
+        </div>
+        
       </div>
       </div>
       <div class="contact-map">

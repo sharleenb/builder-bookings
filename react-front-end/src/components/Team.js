@@ -30,7 +30,7 @@ export default function Team() {
   return (
     <div className="page-layout">
       <div className="team-header">
-        <h1>Meet our Team!</h1>
+        <h1 class="page-title">Meet our Team!</h1>
       </div>
       <div>
         <h3>Who We Are?</h3>
