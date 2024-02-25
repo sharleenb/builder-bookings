@@ -169,6 +169,20 @@ const getMemberTypes = function () {
   })
 }
 
+const getSocials = function () {
+  return new Promise((resolve, reject) => {
+    const statement = "SELECT * FROM socials WHERE active IS true;"
+
+    pool.query(statement)
+    .then((result) => {
+      resolve(result.rows);
+    })
+    .catch((err) => {
+      reject(err);
+    });
+  })
+}
+
 module.exports = {
   getProjects,
   getHomes,
@@ -180,5 +194,6 @@ module.exports = {
   getFiveHomes,
   getFiveCondos,
   getMembers,
-  getMemberTypes
+  getMemberTypes, 
+  getSocials
 };

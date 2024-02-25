@@ -28,13 +28,13 @@
   align-items: center;
   background-color: white;
   height: 7em;
-  padding: 0px 75px 0px 75px;
+  padding: 5px 80px 5px 80px;
   box-shadow: 2px 0px 3px darkgrey;
 }
 
 .links {
   display: flex;
-  margin-right: 0px;
+  margin-right: 20px;
 }
 
 .nav-btn {
@@ -43,7 +43,7 @@
   color: black;
   padding-left: 20px;
   padding-right: 20px;
-  height: 8.4em;
+  height: 122px;
 }
 
 .nav-btn:hover {
@@ -224,13 +224,14 @@ figcaption {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 5em;
+  margin: 5em;
+  width: 35%
 }
 
 .photo-container img {
   position: relative;
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: 350px;
 }
 
 .slide {
@@ -297,7 +298,7 @@ figcaption {
 }
 
 .newsletter {
-  background-color: rgba(216,36,96,1);
+  background-color: rgba(208, 51, 51);
   height: 170px;
   width: 100%;
   display: flex;
@@ -363,7 +364,7 @@ figcaption {
 }
 
 .office-detail h3{
-  color: rgba(216,36,96,1);
+  color: rgba(208, 51, 51);
 }
 
 .contact-map {
@@ -511,6 +512,7 @@ a {
   border: solid black;
   border-right-width: 0.5em;
   border-left-width: 0.5em;
+  height: 23px;
   background-color: black;
   color: white;
 }

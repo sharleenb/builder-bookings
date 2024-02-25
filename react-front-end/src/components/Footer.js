@@ -5,12 +5,21 @@ export default function Footer() {
     <div class="page-layout">
       <div class="newsletter">
         <div class="newsletter-p">
-        <p class="fa fa-paper-plane"></p>
-        <p><strong>Sign up to get first access</strong></p>
-        <p>You will be notified as soon as new listings are added</p>
+          <p class="fa fa-paper-plane"></p>
+          <p>
+            <strong>Sign up to get first access</strong>
+          </p>
+          <p>You will be notified as soon as new listings are added</p>
         </div>
-      
-        <iframe title="subscription-form" height="190" src="https://5e2f5826.sibforms.com/serve/MUIFAPZFxZ_-K82nkkXQRNHFZj6l_-96o9jIl8ooC-Xc1ahUUFkwURyPHvH2TabqNiRTdoEwPGPS2PGLeTLicSOE559LcuzzHK5XpyZ4XGvPoogvuDs_ZOJwOR1r5EeD2Vri35yuKQB0e3g6okJ4DNaigI3ZN9jtTP16tmaNj9nM1dvLY_svn6VCF5BL0o3zOt7GySPo9cvid4Il" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+        <iframe
+          title="subscription-form"
+          height="190"
+          src="https://5e2f5826.sibforms.com/serve/MUIFANKUyIiGzDENM3yqSqvA96xbLshQYlnOj8AJYrN35PZrc0qmX5NNkorU-tUxZva1utESqAJl-m37U0nxkSuLkEgZHGkJeqWhSV4amptq7U_9ahQY0PqwvSM6rpgTA89OywKKuRi41yG_XFW0wtRUHy4KeT4RK8HaOcmqS4sBOMNRzgxEnqhIBlZxY8sQ6kVEPhdJr30MupzG"
+          frameborder="0"
+          scrolling="no"
+          allowfullscreen
+        ></iframe>
       </div>
 
       <div class="footer-details">

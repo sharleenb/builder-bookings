@@ -33,6 +33,16 @@ export default function ProjectDetails() {
     <h3>Builder</h3>
     <div>{data.builder}</div>
     <div>{data.about_builder}</div>
+
+    {photoList[0] ?
+    <div className="photo-container">
+    <div id="arrow" class="fa fa-long-arrow-left" aria-hidden="true" onClick={prevSlide}></div>
+      {photoList.map((photo, index) => (
+       <img key={index} src={photo} alt={index} class={slide === index ? "slide" : "slide slide-hidden"}></img>
+    ))}
+    <div id="arrow" class="fa fa-long-arrow-right" aria-hidden="true" onClick={nextSlide}></div>
+    </div> : ''}
+    
     <h3>Project Details</h3>
     <div class="details-photos">
     <ul>
@@ -45,14 +55,6 @@ export default function ProjectDetails() {
       <li>Maintenance Fees: {data.maintenance_fees}</li>
       <li>Amenities: {data.amenities}</li>
     </ul>
-    {photoList[0] ?
-    <div className="photo-container">
-    <div id="arrow" class="fa fa-long-arrow-left" aria-hidden="true" onClick={prevSlide}></div>
-      {photoList.map((photo, index) => (
-       <img key={index} src={photo} alt={index} class={slide === index ? "slide" : "slide slide-hidden"}></img>
-    ))}
-    <div id="arrow" class="fa fa-long-arrow-right" aria-hidden="true" onClick={nextSlide}></div>
-    </div> : ''}
 
     </div>
     <h3>Location</h3>

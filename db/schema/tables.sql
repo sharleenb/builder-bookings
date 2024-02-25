@@ -31,3 +31,11 @@ CREATE TABLE members (
   photo_url TEXT, 
   about TEXT
 )
+
+CREATE TABLE socials (
+  id serial PRIMARY KEY, 
+  name VARCHAR(255), 
+  link_url TEXT, 
+  icon TEXT, 
+  active BOOLEAN
+)

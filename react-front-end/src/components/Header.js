@@ -1,11 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Header() {
 
   // need to figure out the styling for selected button
   
   const [style, setStyle] = useState("button");
+  const [socials, setSocials] = useState([])
  
     const changeStyle = () => {
         console.log("you just clicked");
@@ -15,6 +17,12 @@ export default function Header() {
         setStyle("props.selected")
       }
     };
+
+  useEffect(() => {
+    axios.get("/api/socials").then((result) => {
+      setSocials(result.data)
+    })
+  })  
 
 
   return (
@@ -27,15 +35,20 @@ export default function Header() {
         <a class="fa" href="mailto:info@builderbookings.ca">info@builderbookings.ca</a>
         </span>
       </div>
+
       <div className="socials">
-      <a href="https://www.facebook.com/builderbookings" class="fa fa-facebook"> </a>
+        {socials.map((social) => (
+          <a href={social.link_url} class={social.icon}></a>
+        ))}
+      {/* <a href="https://www.facebook.com/builderbookings" class="fa fa-facebook"> </a>
       <a href="https://twitter.com/?lang=en" class="fa fa-twitter"> </a>
       <a href="https://www.instagram.com/" class="fa fa-instagram"> </a>
-      <a href="https://www.youtube.com/" class="fa fa-youtube"> </a>
+      <a href="https://www.youtube.com/" class="fa fa-youtube"> </a> */}
       </div>
     </div>
     <div className="navigation">
-        <a href="/"> <img class="logo" src="logo.png" width={125} height={80} alt="logos"></img>
+        <a href="/"> <img class="logo" src="logo.png" width={205}
+          height={100} alt="logos"></img>
         </a>
         
         <div className='links'>
