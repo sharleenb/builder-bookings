@@ -32,6 +32,8 @@ CREATE TABLE members (
   about TEXT
 )
 
+ALTER TABLE members RENAME COLUMN photo_url TO thumbnail;
+
 CREATE TABLE socials (
   id serial PRIMARY KEY, 
   name VARCHAR(255), 
@@ -46,3 +48,4 @@ CREATE TABLE blogs (
   content TEXT, 
   date_created DATE
 )
+

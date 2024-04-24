@@ -1,6 +1,5 @@
 const { query } = require("express");
 const { pool } = require("../db/connection");
-const { MulterError } = require("multer");
 
 const getProjects = function () {
   return new Promise((resolve, reject) => {
@@ -213,7 +212,7 @@ const editMemberDetails = function (values, memberId) {
 const addMember = function (newData) {
   return new Promise((resolve, reject) => {
     const statement =
-      "INSERT INTO members (name, member_type, designation, phone, email, languages, photo_url, about) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+      "INSERT INTO members (name, member_type, designation, phone, email, languages, thumbnail, about) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
     const values = Object.values(newData);
 
     pool
@@ -390,7 +389,7 @@ const getBlogDetails = function (blogId) {
         reject(err);
       });
   });
-}
+};
 
 const editBlogDetails = function (values, blogId) {
   return new Promise((resolve, reject) => {
@@ -415,7 +414,7 @@ const editBlogDetails = function (values, blogId) {
   });
 };
 
-const addBlog = function(newData) {
+const addBlog = function (newData) {
   return new Promise((resolve, reject) => {
     const statement =
       "INSERT INTO blogs (title, content, date_created) VALUES ($1, $2, $3)";
@@ -430,7 +429,7 @@ const addBlog = function(newData) {
         reject(err);
       });
   });
-}
+};
 
 const deleteBlog = function (blogId) {
   return new Promise((resolve, reject) => {
@@ -446,34 +445,6 @@ const deleteBlog = function (blogId) {
   });
 };
 
-const addThumbnail = function (image, projectId) {
-  return new Promise((resolve, reject) => {
-    const statement = "UPDATE projects SET thumbnail=$1 WHERE id=$2;"
-    pool
-      .query(statement, [image, projectId])
-      .then((result) => {
-        resolve(result.rows);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  })
-}
-
-const getThumbnail = function (projectId) {
-  return new Promise((resolve, reject) => {
-    const statement = "SELECT thumbnail FROM projects WHERE id=$1;"
-    pool
-      .query(statement, [projectId])
-      .then((result) => {
-        resolve(result.rows[0].thumbnail);
-      })
-      .catch((err) => {
-        console.log(err);
-        reject(err);
-      });
-  })
-}
 
 module.exports = {
   getProjects,
@@ -502,7 +473,5 @@ module.exports = {
   getBlogDetails,
   editBlogDetails,
   addBlog,
-  deleteBlog, 
-  addThumbnail, 
-  getThumbnail
+  deleteBlog,
 };

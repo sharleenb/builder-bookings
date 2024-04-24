@@ -17,7 +17,7 @@ export default function MemberDetail() {
   return (
     <div class="page-layout">
       <div className="member-page">
-      <img src={member.photo_url} className="member-image" alt="member"></img>
+      <img src={`/uploads/${member.photo_url}`} className="member-image" alt="member"></img>
       <div className="member-details">
         <h1>{member.name}</h1>
         <span>Designation: {member.designation}</span>

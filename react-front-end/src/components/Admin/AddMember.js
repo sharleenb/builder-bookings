@@ -21,13 +21,32 @@ export default function AddMember() {
     setFormData({ ...formData, [name]: value });
   };
 
+  // const handleUpload = () => {
+  //   const formData = new FormData();
+  //   formData.append("photo_url", thumbnail);
+  //   axios
+  //     .post(`/api/upload-memberthumbnail/${id}`, formData)
+  //     .then(() => {
+  //       axios
+  //         .get(`/api/get-memberthumbnail/${id}`)
+  //         .then((res) => {
+  //           setThumbnailUrl(res.data);
+  //         })
+  //         .catch((error) => {
+  //           console.log("error fetching thumbnail", error);
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       console.log("error uploading thumbnail", error);
+  //     });
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('entered submit');
     axios
       .post("/api/add-member", formData)
       .then((response) => {
-        navigate("/edit-members")
+        navigate("/edit-members");
       })
       .catch((error) => {
         console.error("Error adding member:", error);
@@ -58,7 +77,7 @@ export default function AddMember() {
             onChange={handleInputChange}
             required
           >
-            <option value="" disabled >
+            <option value="" disabled>
               Please select
             </option>
             <option value={"Real Estate Agent"}>Real Estate Agent</option>
@@ -112,13 +131,14 @@ export default function AddMember() {
         <div>
           <label htmlFor="photo_url">Photo Url</label>
           <input
-            type="text"
+            type="file"
             name="photo_url"
             id="photo_url"
             value={formData.photo_url}
             onChange={handleInputChange}
             rquired
           ></input>
+          {/* <button onClick={handleUpload}>Upload</button> */}
         </div>
         <div>
           <label htmlFor="about">About Yourself</label>
@@ -133,15 +153,12 @@ export default function AddMember() {
           ></textarea>
         </div>
         <div className="form-buttons">
-        <button type="submit">
-          Add Member
-        </button>
-        <button type="reset" onClick={() => navigate("/edit-members")}>
-        Cancel
-      </button>
+          <button type="submit">Add Member</button>
+          <button type="reset" onClick={() => navigate("/edit-members")}>
+            Cancel
+          </button>
         </div>
       </form>
-     
     </div>
   );
 }

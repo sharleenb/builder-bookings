@@ -22,16 +22,10 @@ export default function EditProject() {
     const formData = new FormData();
     formData.append("thumbnail", thumbnail);
     axios
-      .post(`/api/upload-file/${id}`, formData)
-      .then(() => {
-        axios
-          .get(`/api/get-thumbnail/${id}`)
-          .then((res) => {
-            setThumbnailUrl(res.data);
-          })
-          .catch((error) => {
-            console.log("error fetching thumbnail", error);
-          });
+      .post("/api/upload", formData)
+      .then((res) => {
+        setThumbnailUrl(res.data.uploadedFile);
+        setUpdatedData({...updatedData, ["thumbnail"]: res.data.uploadedFile})
       })
       .catch((error) => {
         console.log("error uploading thumbnail", error);
@@ -39,7 +33,7 @@ export default function EditProject() {
   };
 
   // WANT TO FIND A WAY TO SHOW ORIGINAL PICTURE FROM DATABASE NOT ONLY WHAT IS POSTED IN THE EDIT
-  
+
   // useEffect(() => {
   //   axios
   //     .get(`/api/get-thumbnail/${id}`)
@@ -97,6 +91,7 @@ export default function EditProject() {
                     value={updatedData[key] || value}
                     onChange={(e) => handleInputChange(key, e.target.value)}
                   >
+                    <option value={""}>Select Status</option>
                     <option value={"SOLD OUT"}>SOLD OUT</option>
                     <option value={"NOW SELLING"}>NOW SELLING</option>
                     <option value={"COMING SOON"}>COMING SOON</option>
@@ -111,6 +106,7 @@ export default function EditProject() {
                     value={updatedData[key] || value}
                     onChange={(e) => handleInputChange(key, e.target.value)}
                   >
+                    <option value={""}>Select Type</option>
                     <option value={"Homes"}>Homes</option>
                     <option value={"Condos"}>Condos</option>
                   </select>

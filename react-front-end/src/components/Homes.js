@@ -103,7 +103,7 @@ export default function Homes() {
           <div class="project-wrapper" onClick={() => handleClick(project.id)}>
             <img
               class="thumbnail-image"
-              src={project.thumbnail}
+              src={`/uploads/${project.thumbnail}`}
               alt="thumbnail"
             />
             <div class="overlay">

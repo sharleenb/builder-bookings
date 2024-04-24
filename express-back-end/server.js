@@ -32,8 +32,6 @@ const {
   editBlogDetails,
   addBlog,
   deleteBlog,
-  addThumbnail,
-  getThumbnail,
 } = require("./helpers");
 const PORT = 8080;
 
@@ -75,32 +73,20 @@ App.listen(PORT, () => {
   );
 });
 
-App.post("/api/upload-file/:id", upload.single("thumbnail"), (req, res) => {
-  const projectId = req.params.id;
+App.post("/api/upload", upload.single("thumbnail"), (req, res) => {
   try {
-    const image = req.file.filename;
-    addThumbnail(image, projectId)
-      .then((result) => {
-        res.json(result);
-      })
-      .catch((error) => {
-        res.status(500).json({ error: "Internal Server Error" });
+    res
+      .status(201)
+      .json({
+        success: true,
+        message: "File uploaded successfully",
+        uploadedFile: req.file.originalname,
       });
+      console.log(req.file.originalname);
   } catch (error) {
     console.error("Error uploading file:", error);
-    res.status(500).json({ success: false, error: "File upload failed" });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
-});
-
-App.get("/api/get-thumbnail/:id", (req, res) => {
-  const projectId = req.params.id;
-  getThumbnail(projectId)
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((error) => {
-      res.status(500).json({ error: "Internal Server Error" });
-    });
 });
 
 App.get("/api/homes", (req, res) => {

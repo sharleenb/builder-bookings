@@ -27,6 +27,7 @@ export default function Team() {
     })
   }, [])
 
+
   return (
     <div className="page-layout">
       <div className="team-header">
@@ -49,7 +50,7 @@ export default function Team() {
         .map((member) => (
         <div class="member-container" onClick={() => handleClick(member.id)}>
         <div className="image-container"> 
-        <img src={member.photo_url} className="member-photo" alt="member"></img>
+        <img src={`/uploads/${member.photo_url}`} className="member-photo" alt="member"></img>
         <figcaption>
        <h4>{member.name}</h4>
         <div>{member.designation}</div>
