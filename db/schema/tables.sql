@@ -39,3 +39,10 @@ CREATE TABLE socials (
   icon TEXT, 
   active BOOLEAN
 )
+
+CREATE TABLE blogs (
+  id serial PRIMARY KEY, 
+  title VARCHAR(255), 
+  content TEXT, 
+  date_created DATE
+)
