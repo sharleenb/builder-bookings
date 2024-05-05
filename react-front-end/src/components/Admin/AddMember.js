@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddMember() {
   const navigate = useNavigate();
+  const [thumbnail, setThumbnail] = useState(null);
+  const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     member_type: "",
@@ -12,7 +14,7 @@ export default function AddMember() {
     phone: "",
     email: "",
     languages: "",
-    photo_url: "",
+    thumbnail: "",
     about: "",
   });
 
@@ -21,25 +23,26 @@ export default function AddMember() {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleUpload = () => {
-  //   const formData = new FormData();
-  //   formData.append("photo_url", thumbnail);
-  //   axios
-  //     .post(`/api/upload-memberthumbnail/${id}`, formData)
-  //     .then(() => {
-  //       axios
-  //         .get(`/api/get-memberthumbnail/${id}`)
-  //         .then((res) => {
-  //           setThumbnailUrl(res.data);
-  //         })
-  //         .catch((error) => {
-  //           console.log("error fetching thumbnail", error);
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       console.log("error uploading thumbnail", error);
-  //     });
-  // };
+  const getThumbnailFile = (e) => {
+    const file = e.target.files[0];
+    setThumbnail(file);
+    e.target.value = null;
+  };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    const photoData = new FormData();
+    photoData.append("thumbnail", thumbnail);
+    axios
+      .post("/api/upload", photoData)
+      .then((res) => {
+        setThumbnailUrl(res.data.uploadedFile);
+        setFormData({...formData, ["thumbnail"]: res.data.uploadedFile})
+      })
+      .catch((error) => {
+        console.log("error uploading thumbnail", error);
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -129,16 +132,20 @@ export default function AddMember() {
           ></input>
         </div>
         <div>
-          <label htmlFor="photo_url">Photo Url</label>
+          <label htmlFor="thumbnail">Photo Url</label>
           <input
             type="file"
-            name="photo_url"
-            id="photo_url"
-            value={formData.photo_url}
-            onChange={handleInputChange}
-            rquired
+            name="thumbnail"
+            accept="image/*"
+            onChange={getThumbnailFile}
+            required
           ></input>
-          {/* <button onClick={handleUpload}>Upload</button> */}
+          <button onClick={handleUpload}>Upload</button>
+          <img
+                src={`/uploads/${thumbnailUrl}`}
+                alt={thumbnail}
+                className="thumbnail-preview"
+              />
         </div>
         <div>
           <label htmlFor="about">About Yourself</label>

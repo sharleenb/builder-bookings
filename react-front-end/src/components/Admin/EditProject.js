@@ -48,6 +48,7 @@ export default function EditProject() {
   useEffect(() => {
     axios.get(`/api/edit-project/${id}`).then((result) => {
       setData(result.data[0]);
+      setThumbnailUrl(result.data[0].thumbnail)
     });
   }, [id]);
 

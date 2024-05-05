@@ -7,6 +7,7 @@ export default function AddProject() {
   const navigate = useNavigate();
   const [photos, setPhotos] = useState([]);
   const [thumbnail, setThumbnail] = useState();
+  const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const [formValues, setFormValues] = useState({
     project_name: "",
     city: "",
@@ -24,53 +25,45 @@ export default function AddProject() {
     maintenance_fees: "",
     amenities: "",
     thumbnail: "",
-    photos: [],
+    photos: [""],
     map_url: "",
   });
-
-  const getFile = (e) => {
-    const files = e.target.files;
-    const fileNames = [];
-    for (let i = 0; i < files.length; i++) {
-      fileNames.push(files[i].name);
-    }
-    setPhotos([...photos, ...fileNames]);
-    setFormValues({ ...formValues, photos: [...photos, ...fileNames] });
-  };
 
   const getThumbnailFile = (e) => {
     const file = e.target.files[0];
     setThumbnail(file);
-    setFormValues({ ...formValues, thumbnail: file.name });
   };
 
-  const handleUpload = () => {
-    const formData = new FormData();
-    formData.append("thumbnail", thumbnail);
+  const handleUpload = (e) => {
+    e.preventDefault();
+    const photoData = new FormData();
+    photoData.append("thumbnail", thumbnail);
     axios
-      .post("/api/upload-file", formData)
+      .post("/api/upload", photoData)
       .then((res) => {
-        console.log(res);
+        setThumbnailUrl(res.data.uploadedFile);
+        setFormValues({ ...formValues, ["thumbnail"]: res.data.uploadedFile });
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await axios.post("/api/add-project", formValues).then((res) => {
+    axios
+      .post("/api/add-project", formValues)
+      .then((response) => {
         navigate("/edit-projects");
+      })
+      .catch((error) => {
+        console.error("Error adding member:", error);
       });
-    } catch (error) {
-      console.error("Error adding project:", error);
-    }
   };
 
   return (
@@ -78,7 +71,7 @@ export default function AddProject() {
       <h1>Add a Project</h1>
       <form onSubmit={handleSubmit} className="add-form">
         <div>
-          <label for="project_name">Project Name</label>
+          <label htmlFor="project_name">Project Name</label>
           <input
             type="text"
             name="project_name"
@@ -89,7 +82,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="city">City</label>
+          <label htmlFor="city">City</label>
           <input
             type="text"
             name="city"
@@ -100,7 +93,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="province">Province</label>
+          <label htmlFor="province">Province</label>
           <input
             type="text"
             name="province"
@@ -111,7 +104,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="address">Address</label>
+          <label htmlFor="address">Address</label>
           <input
             type="text"
             name="address"
@@ -122,7 +115,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="price">Price</label>
+          <label htmlFor="price">Price</label>
           <input
             type="text"
             name="price"
@@ -133,7 +126,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="status">Status</label>
+          <label htmlFor="status">Status</label>
           <select
             name="status"
             id="status"
@@ -150,7 +143,7 @@ export default function AddProject() {
           </select>
         </div>
         <div>
-          <label for="builder">Builder</label>
+          <label htmlFor="builder">Builder</label>
           <input
             type="text"
             name="builder"
@@ -161,8 +154,8 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="about_builder">About Builder</label>
-            <textarea
+          <label htmlFor="about_builder">About Builder</label>
+          <textarea
             type="text"
             name="about_builder"
             id="about_builder"
@@ -174,7 +167,7 @@ export default function AddProject() {
           ></textarea>
         </div>
         <div>
-          <label for="project_type">Project Type</label>
+          <label htmlFor="project_type">Project Type</label>
           <select
             name="project_type"
             id="project_type"
@@ -190,7 +183,7 @@ export default function AddProject() {
           </select>
         </div>
         <div>
-          <label for="occupancy">Occupancy</label>
+          <label htmlFor="occupancy">Occupancy</label>
           <input
             type="text"
             name="occupancy"
@@ -201,7 +194,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="num_buildings">Number of Buildings</label>
+          <label htmlFor="num_buildings">Number of Buildings</label>
           <input
             type="text"
             name="num_buildings"
@@ -211,7 +204,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="num_storeys">Number of Storeys</label>
+          <label htmlFor="num_storeys">Number of Storeys</label>
           <input
             type="text"
             name="num_storeys"
@@ -221,7 +214,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="parking">Parking</label>
+          <label htmlFor="parking">Parking</label>
           <input
             type="text"
             name="parking"
@@ -231,7 +224,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="maintenance_fees">Maintenance Fees</label>
+          <label htmlFor="maintenance_fees">Maintenance Fees</label>
           <input
             type="text"
             name="maintenance_fees"
@@ -241,7 +234,7 @@ export default function AddProject() {
           ></input>
         </div>
         <div>
-          <label for="amenities">Amenities</label>
+          <label htmlFor="amenities">Amenities</label>
           <textarea
             type="text"
             name="amenities"
@@ -253,7 +246,7 @@ export default function AddProject() {
           ></textarea>
         </div>
         <div>
-          <label for="thumbnail">Thumbnail Photo</label>
+          <label htmlFor="thumbnail">Thumbnail Photo</label>
           <input
             type="file"
             name="thumbnail"
@@ -262,16 +255,14 @@ export default function AddProject() {
             required
           />
           <button onClick={handleUpload}>Upload</button>
-          {/* <input
-            type="text"
-            name="thumbnail"
-            id="thumbnail"
-            value={formValues.thumbnail}
-            onChange={handleInputChange}
-          ></input>
+          <img
+            src={`/uploads/${thumbnailUrl}`}
+            alt={thumbnail}
+            className="thumbnail-preview"
+          />
         </div>
-        <div>
-          <label for="photos">Photo</label>
+        {/* <div>
+          <label htmlFor="photos">Photo</label>
           <input
             type="file"
             name="photos"
@@ -279,16 +270,9 @@ export default function AddProject() {
             onChange={getFile}
             required
           />
-          {/* <input
-            type="text"
-            name="photos"
-            id="photos"
-            value={formValues.photos}
-            onChange={handleInputChange}
-          ></input> */}
-        </div>
+        </div> */}
         <div>
-          <label for="map_url">Map Url</label>
+          <label htmlFor="map_url">Map Url</label>
           <input
             type="text"
             name="map_url"
@@ -298,10 +282,10 @@ export default function AddProject() {
           ></input>
         </div>
         <div className="form-buttons">
-        <button type="submit">Add Project</button>
-        <button type="reset" onClick={() => navigate("/edit-projects")}>
-          Cancel
-        </button>
+          <button type="submit">Add Project</button>
+          <button type="reset" onClick={() => navigate("/edit-projects")}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>

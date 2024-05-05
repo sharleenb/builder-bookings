@@ -35,6 +35,7 @@ export default function EditMember() {
   useEffect(() => {
     axios.get(`/api/edit-member/${id}`).then((result) => {
       setData(result.data[0]);
+      setThumbnailUrl(result.data[0].thumbnail)
     });
   }, [id]);
 

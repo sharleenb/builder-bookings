@@ -614,3 +614,8 @@ table tr {
 .form-input {
   width: 60%;
 }
+
+.thumbnail-preview {
+  width: 250px;
+  height: 200px;
+}

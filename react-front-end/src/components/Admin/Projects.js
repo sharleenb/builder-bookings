@@ -9,7 +9,7 @@ export default function Projects() {
     axios.get("/api/projects").then((result) => {
       setData(result.data);
     });
-  }, []);
+  }, [data]);
 
   const navigate = useNavigate();
 
