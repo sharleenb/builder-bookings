@@ -18,6 +18,7 @@ export default function ProjectDetails() {
   });
 
   const photoList = data.photos || [];
+  const totalPhotos = photoList.length;
 
   const nextSlide = () => {
     setSlide(slide === photoList.length - 1 ? 0 : slide + 1);
@@ -35,27 +36,32 @@ export default function ProjectDetails() {
       <div>{data.about_builder}</div>
 
       {photoList[0] ? (
-        <div className="photo-container">
+        <div className="photo-count">
+          <div className="photo-container">
           <div
             id="arrow"
             class="fa fa-long-arrow-left"
             aria-hidden="true"
             onClick={prevSlide}
           ></div>
+          <div>
           {photoList.map((photo, index) => (
             <img
               key={index}
-              src={photo}
-              alt={index}
+              src={`/uploads/${photo}`}
+              alt={`Slide ${index + 1}`}
               class={slide === index ? "slide" : "slide slide-hidden"}
             ></img>
           ))}
+          </div>
           <div
             id="arrow"
             class="fa fa-long-arrow-right"
             aria-hidden="true"
             onClick={nextSlide}
           ></div>
+        </div>
+        <div className="slide-counter">{`${slide + 1} / ${totalPhotos}`}</div>
         </div>
       ) : (
         ""
@@ -64,20 +70,20 @@ export default function ProjectDetails() {
       <h3>Project Details</h3>
       <div class="details-photos">
         <ul>
-          <li>Project Type: {data.project_type}</li>
-          <li>Status: {data.status}</li>
-          <li>Occupancy: {data.occupancy}</li>
-          <li>Number of Buildings: {data.num_buildings}</li>
-          <li>Number of Stores: {data.num_storeys}</li>
-          <li>Parking: {data.parking}</li>
-          <li>Maintenance Fees: {data.maintenance_fees}</li>
-          <li>Amenities: {data.amenities}</li>
+          <li><strong>Project Type:</strong> {data.project_type}</li>
+          <li><strong>Status:</strong> {data.status}</li>
+          <li><strong>Occupancy:</strong> {data.occupancy}</li>
+          <li><strong>Number of Buildings:</strong> {data.num_buildings}</li>
+          <li><strong>Number of Stores:</strong> {data.num_storeys}</li>
+          <li><strong>Parking:</strong> {data.parking}</li>
+          <li><strong>Maintenance Fees:</strong> {data.maintenance_fees}</li>
+          <li><strong>Amenities:</strong> {data.amenities}</li>
         </ul>
       </div>
-      <h3>Location</h3>
+      <h3><strong>Location</strong></h3>
       <div class="location">
         <div class="address">
-          <h5>Address</h5>
+          <h5><strong>Address</strong></h5>
           {data.address}
           <br></br>
           {data.city}, {data.province}

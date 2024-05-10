@@ -26,7 +26,6 @@ export default function AddMember() {
   const getThumbnailFile = (e) => {
     const file = e.target.files[0];
     setThumbnail(file);
-    e.target.value = null;
   };
 
   const handleUpload = (e) => {
@@ -52,6 +51,7 @@ export default function AddMember() {
         navigate("/edit-members");
       })
       .catch((error) => {
+        console.log(formData);
         console.error("Error adding member:", error);
       });
   };
@@ -139,7 +139,7 @@ export default function AddMember() {
             accept="image/*"
             onChange={getThumbnailFile}
             required
-          ></input>
+          />
           <button onClick={handleUpload}>Upload</button>
           <img
                 src={`/uploads/${thumbnailUrl}`}

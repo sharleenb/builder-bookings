@@ -25,7 +25,7 @@ CREATE TABLE members (
   name VARCHAR(255),
   member_type VARCHAR(255), 
   designation VARCHAR(255), 
-  phone VARCHAR(12), 
+  phone VARCHAR(15), 
   email VARCHAR(255), 
   languages VARCHAR(255), 
   photo_url TEXT, 
@@ -33,6 +33,8 @@ CREATE TABLE members (
 )
 
 ALTER TABLE members RENAME COLUMN photo_url TO thumbnail;
+ALTER TABLE members
+ALTER COLUMN phone TYPE VARCHAR(20);
 
 CREATE TABLE socials (
   id serial PRIMARY KEY, 
@@ -49,3 +51,10 @@ CREATE TABLE blogs (
   date_created DATE
 )
 
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  email VARCHAR (255) NOT NULL,
+  password VARCHAR (255) NOT NULL
+);
+
+INSERT INTO users (email, password) VALUES ('alisyedrealtor@gmail.com', '$2a$10$Qio/eBsnSh/3eQZBTWtore42Ykc.u334Ge9oiRZNfdUaWL95ZcnbG')

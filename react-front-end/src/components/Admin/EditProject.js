@@ -8,7 +8,7 @@ export default function EditProject() {
   const [data, setData] = useState([]);
   const [updatedData, setUpdatedData] = useState({});
   const { id } = useParams();
-
+  const [photos, setPhotos] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
 
@@ -25,30 +25,42 @@ export default function EditProject() {
       .post("/api/upload", formData)
       .then((res) => {
         setThumbnailUrl(res.data.uploadedFile);
-        setUpdatedData({...updatedData, ["thumbnail"]: res.data.uploadedFile})
+        setUpdatedData({
+          ...updatedData,
+          ["thumbnail"]: res.data.uploadedFile,
+        });
       })
       .catch((error) => {
         console.log("error uploading thumbnail", error);
       });
   };
 
-  // WANT TO FIND A WAY TO SHOW ORIGINAL PICTURE FROM DATABASE NOT ONLY WHAT IS POSTED IN THE EDIT
+  const handlePhotosUpload = (e) => {
+    const files = Array.from(e.target.files);
+    const uploadedPhotos = [];
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`/api/get-thumbnail/${id}`)
-  //     .then((res) => {
-  //       setThumbnailUrl(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error fetching thumbnail", error);
-  //     });
-  // }, [thumbnail]);
+    files.forEach((file) => {
+      const photoData = new FormData();
+      photoData.append("thumbnail", file);
+
+      axios
+        .post("/api/upload", photoData)
+        .then((res) => {
+          uploadedPhotos.push(res.data.uploadedFile); // Store the uploaded photo URL
+          setPhotos(uploadedPhotos); // Update state with the new array of photo URLs
+          setUpdatedData({ ...updatedData, ["photos"]: uploadedPhotos });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  };
 
   useEffect(() => {
     axios.get(`/api/edit-project/${id}`).then((result) => {
       setData(result.data[0]);
-      setThumbnailUrl(result.data[0].thumbnail)
+      setThumbnailUrl(result.data[0].thumbnail);
+      setPhotos(result.data[0].photos);
     });
   }, [id]);
 
@@ -142,6 +154,31 @@ export default function EditProject() {
                       alt={thumbnail}
                       className="thumbnail-preview"
                     />
+                  </div>
+                );
+              } else if (key === "photos") {
+                inputElement = (
+                  <div>
+                    <div>
+                      <input
+                        className="form-input"
+                        type="file"
+                        name="photos"
+                        accept="image/*"
+                        onChange={handlePhotosUpload}
+                        multiple
+                        required
+                      />
+                    </div>
+                    <div className="photos-view-container">
+                      {photos.map((photoUrl, index) => (
+                        <img
+                          key={index}
+                          src={`/uploads/${photoUrl}`}
+                          alt={`Photo ${index}`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 );
               } else if (key !== "id") {

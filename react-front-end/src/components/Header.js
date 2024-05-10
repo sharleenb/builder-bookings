@@ -3,19 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Header() {
-  // need to figure out the styling for selected button
-
-  const [style, setStyle] = useState("button");
   const [socials, setSocials] = useState([]);
-
-  const changeStyle = () => {
-    console.log("you just clicked");
-    if (style !== "button") {
-      setStyle("button");
-    } else {
-      setStyle("props.selected");
-    }
-  };
 
   useEffect(() => {
     axios.get("/api/active-socials").then((result) => {
@@ -30,7 +18,7 @@ export default function Header() {
           <span>1(289)630 - 4900</span>
           <span> || </span>
           <span id="email-link">
-            <a class="fa" href="mailto:info@builderbookings.ca">
+            <a class="email" href="mailto:info@builderbookings.ca">
               info@builderbookings.ca
             </a>
           </span>
@@ -56,12 +44,12 @@ export default function Header() {
 
         <div className="links">
           <a href="/homes">
-            <button className="nav-btn" onClick={() => changeStyle}>
+            <button className="nav-btn">
               Homes
             </button>
           </a>
           <a href="/condos">
-            <button className="nav-btn" onClick={() => changeStyle}>
+            <button className="nav-btn">
               Condos
             </button>
           </a>

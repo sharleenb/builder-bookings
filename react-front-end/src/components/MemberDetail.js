@@ -20,11 +20,11 @@ export default function MemberDetail() {
       <img src={`/uploads/${member.thumbnail}`} className="member-image" alt="member"></img>
       <div className="member-details">
         <h1>{member.name}</h1>
-        <span>Designation: {member.designation}</span>
-        <span>Agent Type: {member.member_type}</span>
-        <span>Phone Number: {member.phone}</span>
-        <span>Email: {member.email}</span>
-        <span>Languages Spoken: {member.languages}</span>
+        <span><strong>Designation:</strong> {member.designation}</span>
+        <span><strong>Agent Type:</strong> {member.member_type}</span>
+        <span><strong>Phone Number:</strong> {member.phone}</span>
+        <span><strong>Email:</strong> {member.email}</span>
+        <span><strong>Languages Spoken:</strong> {member.languages}</span>
         <p>{member.about}</p>
       </div>  
       </div>

@@ -1,11 +1,11 @@
 
-.fa {
+.email {
   color: white;
   text-decoration: none;
   margin-right: 30px;
 }
 
-.fa-tiktok, .fa-linkedin-in {
+.fa-brands {
   color: white;
   text-decoration: none;
   margin-right: 30px;
@@ -13,6 +13,7 @@
 
 #email-link {
   margin-left: 10px;
+  
 }
 
 .header-wrapper {
@@ -226,12 +227,17 @@ figcaption {
   flex-direction: row;
 }
 
+.photo-count {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .photo-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 5em;
-  width: 35%
 }
 
 .photo-container img {
@@ -619,3 +625,16 @@ table tr {
   width: 250px;
   height: 200px;
 }
+
+.photos-view-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.photos-view-container img {
+  width: 250px;
+  height: 200px;
+  margin: 4px;
+}
+

@@ -49,6 +49,27 @@ export default function AddProject() {
       });
   };
 
+  const handlePhotosUpload = (e) => {
+    const files = Array.from(e.target.files);
+    const uploadedPhotos = [];
+
+    files.forEach((file) => {
+      const photoData = new FormData();
+      photoData.append("thumbnail", file);
+
+      axios
+        .post("/api/upload", photoData)
+        .then((res) => {
+          uploadedPhotos.push(res.data.uploadedFile); // Store the uploaded photo URL
+          setPhotos(uploadedPhotos); // Update state with the new array of photo URLs
+          setFormValues({ ...formValues, ["photos"]: uploadedPhotos });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -261,16 +282,26 @@ export default function AddProject() {
             className="thumbnail-preview"
           />
         </div>
-        {/* <div>
+        <div>
           <label htmlFor="photos">Photo</label>
           <input
             type="file"
             name="photos"
             accept="image/*"
-            onChange={getFile}
+            onChange={handlePhotosUpload}
+            multiple
             required
           />
-        </div> */}
+        </div>
+        <div className="photos-view-container">
+          {photos.map((photoUrl, index) => (
+            <img
+              key={index}
+              src={`/uploads/${photoUrl}`}
+              alt={`Photo ${index}`}
+            />
+          ))}
+        </div>
         <div>
           <label htmlFor="map_url">Map Url</label>
           <input

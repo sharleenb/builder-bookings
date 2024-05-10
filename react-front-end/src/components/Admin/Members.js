@@ -24,10 +24,15 @@ export default function Members() {
     });
   };
 
+  const handleBack = () => {
+    navigate("/dashboard")
+  }
+
 
   return (
     <div className="page-layout">
       <h1>Team Members</h1>
+      <button onClick={handleBack}>Back to Dashboard</button>
       <button onClick={() => navigate("/add-member")}>Add Member</button>
 
       <table>

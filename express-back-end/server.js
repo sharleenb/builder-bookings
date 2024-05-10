@@ -1,10 +1,12 @@
 const Express = require("express");
 const multer = require("multer");
 const cors = require("cors");
+const bcrypt = require("bcrypt");
 const path = require("path");
 const App = Express();
 const BodyParser = require("body-parser");
 const {
+  getAdmins,
   getHomes,
   getProjects,
   getCondos,
@@ -75,17 +77,37 @@ App.listen(PORT, () => {
 
 App.post("/api/upload", upload.single("thumbnail"), (req, res) => {
   try {
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: "File uploaded successfully",
-        uploadedFile: req.file.originalname,
-      });
-      console.log(req.file.originalname);
+    res.status(201).json({
+      success: true,
+      message: "File uploaded successfully",
+      uploadedFile: req.file.originalname,
+    });
   } catch (error) {
     console.error("Error uploading file:", error);
     res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+App.post("/api/login", (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required" });
+  }
+
+  try {
+    getAdmins(email, password).then((response) => {
+      if (response.error) {
+        return res.status(401).json({ error: response.error });
+      }
+      res.json(response);
+      console.log(response);
+    });
+  } catch {
+    (error) => {
+      console.error("Error authenticating user:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    };
   }
 });
 

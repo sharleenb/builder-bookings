@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [socials, setSocials] = useState([]);
   const [updatedSocial, setUpdatedSocial] = useState([{}]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("/api/socials").then((result) => {
@@ -26,9 +28,14 @@ export default function Profile() {
     console.log(updatedSocial);
   };
 
+  const handleBack = () => {
+    navigate("/dashboard")
+  }
+
   return (
     <div className="page-layout">
       <h1>Profile</h1>
+      <button onClick={handleBack}>Back to Dashboard</button>
       <h3>Social Links</h3>
       <table>
         <tr>

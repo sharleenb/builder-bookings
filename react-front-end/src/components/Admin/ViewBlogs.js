@@ -23,9 +23,15 @@ export default function ViewBlogs() {
     });
   };
 
+  const handleBack = () => {
+    navigate("/dashboard")
+  }
+
+
   return (
     <div className="page-layout">
       <h1>Blogs</h1>
+      <button onClick={handleBack}>Back to Dashboard</button>
       <button onClick={() => navigate("/add-blog")}>Add Blog</button>
 
       <table>

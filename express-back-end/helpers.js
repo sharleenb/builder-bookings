@@ -1,5 +1,39 @@
-const { query } = require("express");
 const { pool } = require("../db/connection");
+const bcrypt = require("bcrypt");
+
+const getAdmins = function (email, password) {
+  return new Promise((resolve, reject) => {
+    const statement = "SELECT * FROM users WHERE email = $1";
+    pool
+    .query(statement, [email])
+    .then((result) => {
+      if (result.rows.length === 0) {
+        resolve({ error: "Invalid credentials" });
+      }
+
+      const user = result.rows[0];
+
+      // Compare the provided password with the hashed password stored in the database
+      bcrypt.compare(password, user.password, (err, isValid) => {
+        if (err) {
+          console.log("Error comparing passwords:", err);
+          resolve({ error: "Internal Server Error" });
+        }
+        if (!isValid) {
+          // Passwords do not match
+          resolve({ error: "Invalid credentials" });
+        }
+
+        // Passwords match, user authenticated successfully
+        resolve({ message: "Login successful", user: user });
+      });
+    })
+    .catch((error) => {
+      console.error("Error executing query:", error);
+      reject({ error: "Internal Server Error" });
+    });
+  });
+}
 
 const getProjects = function () {
   return new Promise((resolve, reject) => {
@@ -447,6 +481,7 @@ const deleteBlog = function (blogId) {
 
 
 module.exports = {
+  getAdmins,
   getProjects,
   getHomes,
   getCondos,

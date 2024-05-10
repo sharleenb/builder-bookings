@@ -23,20 +23,27 @@ export default function Projects() {
     });
   };
 
+  const handleBack = () => {
+    navigate("/dashboard")
+  }
+
   return (
     <div className="page-layout">
       <h1>Projects</h1>
+      <button onClick={handleBack}>Back to Dashboard</button>
       <button onClick={() => navigate("/add-project")}>Add Project</button>
       <table>
         <tbody>
         <tr>
           <th>Project Name</th>
+          <th>Project Type</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
         {data.map((project, index) => (
           <tr key={index}>
             <td>{project.project_name}</td>
+            <td>{project.project_type}</td>
             <td>
               <button onClick={() => handleEdit(project.id)}>Edit </button>
             </td>
