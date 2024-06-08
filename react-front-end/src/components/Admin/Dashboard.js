@@ -4,12 +4,14 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function Dashboard({ isLoggedIn, onLoginStatusChange }) {
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const handleLogout = () => {
+    localStorage.removeItem("authToken")
     onLoginStatusChange(false);
   }
 
@@ -23,6 +25,7 @@ export default function Dashboard({ isLoggedIn, onLoginStatusChange }) {
     axios
       .post("/api/login", formData)
       .then((response) => {
+        localStorage.setItem("authToken", response.data.token);
         onLoginStatusChange(true);
         setFormData({ email: "", password: "" });
       })

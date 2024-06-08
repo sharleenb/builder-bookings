@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -31,6 +31,13 @@ import AddBlog from "./components/Admin/AddBlog";
 function App() {
   const [click, handleClick] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const handleLoginStatusChange = (status) => {
     setIsLoggedIn(status);

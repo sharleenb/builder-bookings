@@ -1,0 +1,9 @@
+.wrapper {
+  padding: 2rem 3rem;
+}
+
+.editor {
+  margin-top: 1rem;
+  width: 550px;
+  cursor: pointer;
+}

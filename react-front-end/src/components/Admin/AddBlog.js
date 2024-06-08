@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Editor from "../Editor";
 
 export default function AddBlog() {
   const navigate = useNavigate();
@@ -45,14 +46,13 @@ export default function AddBlog() {
         </div>
         <div>
           <label for="content">Content</label>
-          <textarea
+          <Editor
             name="content"
             id="content"
             value={formData.content}
             onChange={handleInputChange}
             required
-            rows={20}
-          ></textarea>
+          />
         </div>
         <div>
           <label for="date_created">Date Created</label>
@@ -66,10 +66,10 @@ export default function AddBlog() {
           ></input>
         </div>
         <div className="form-buttons">
-        <button type="submit">Add Blog</button>
-        <button type="reset" onClick={() => navigate("/edit-blogs")}>
-          Cancel
-        </button>
+          <button type="submit">Add Blog</button>
+          <button type="reset" onClick={() => navigate("/edit-blogs")}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>

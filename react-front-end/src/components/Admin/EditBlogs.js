@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Editor from "../Editor";
 
 export default function EditBlogs() {
   const [blog, setBlog] = useState([]);
@@ -17,6 +18,10 @@ export default function EditBlogs() {
 
   const handleInputChange = (key, value) => {
     setUpdatedData({ ...updatedData, [key]: value });
+  };
+
+  const handleContentChange = (value) => {
+    setUpdatedData((prevData) => ({ ...prevData, content: value }));
   };
 
   const navigate = useNavigate();
@@ -41,44 +46,46 @@ export default function EditBlogs() {
     <div class="page-layout">
       <h1>Edit Blog</h1>
       <div className="edit-form">
-      {Object.entries(blog).map(([key, value]) => {
-        let inputElement;
-        if(key === "content") {
-          inputElement = (
-            <textarea
-            className="form-input"
-            value={updatedData[key] || value}
-            onChange={(e) => handleInputChange(key, e.target.value)}
-            rows={20}>
-            </textarea>
-          )
-        } else {
+        {Object.entries(blog).map(([key, value]) => {
+          let inputElement;
+          if (key === "content") {
+            inputElement = (
+              <div>
+                <Editor
+                  name="content"
+                  value={updatedData[key] || value}
+                  onChange={handleContentChange}
+                  required
+                />
+              </div>
+            );
+          } else {
             inputElement = (
               <input
-              className="form-input"
+                className="form-input"
                 value={updatedData[key] || value}
                 onChange={(e) => handleInputChange(key, e.target.value)}
               ></input>
-            )
+            );
           }
           return (
             <div className="row">
-            <label>{key}</label>
-           {inputElement}
-          </div>
-          )
-      })}
-      <div className="form-buttons">
-      <button type="submit" onClick={handleSaveChanges}>
-        Save Changes
-      </button>
-      <button type="reset" onClick={() => navigate("/edit-blogs")}>
-        Cancel
-      </button>
-      <button key={blog.id} onClick={() => handleDelete(blog.id)}>
-        Delete Blog
-      </button>
-      </div>
+              <label>{key}</label>
+              {inputElement}
+            </div>
+          );
+        })}
+        <div className="form-buttons">
+          <button type="submit" onClick={handleSaveChanges}>
+            Save Changes
+          </button>
+          <button type="reset" onClick={() => navigate("/edit-blogs")}>
+            Cancel
+          </button>
+          <button key={blog.id} onClick={() => handleDelete(blog.id)}>
+            Delete Blog
+          </button>
+        </div>
       </div>
     </div>
   );

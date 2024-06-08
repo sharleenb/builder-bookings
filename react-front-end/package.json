@@ -7,9 +7,11 @@
     "axios": "^0.18.1",
     "bcryptjs": "^2.4.3",
     "classnames": "^2.3.2",
+    "quill": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-modal": "^3.16.1",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.20.1",
     "react-scripts": "2.1.8"
   },
@@ -28,5 +30,8 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:8080",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6"
+  }
 }
