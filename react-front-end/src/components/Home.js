@@ -8,8 +8,8 @@ export default function Home() {
   const [condos, setCondos] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const openModal = () => setModalIsOpen(true)
-  const closeModal = () => setModalIsOpen(false)
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
 
   useEffect(() => {
     axios.get("/api/five/homes").then((result) => {
@@ -33,80 +33,105 @@ export default function Home() {
     <div>
       <div class="home-container">
         <div class="home-image"></div>
-          <div class="top">Find Your Brand New Home</div>
-          <div class="middle">Sign up and get first VIP & Platinum access</div>
-          <div class="bottom">
-            <div class="modal">
-            <button id="bottom-link" class="fa fa-paper-plane" onClick={openModal}>SIGN UP NOW</button>
-            <SignUp isOpen={modalIsOpen} closeModal={closeModal}>
-            </SignUp>
-            </div>
+        <div class="top">Find Your Brand New Home</div>
+        <div class="middle">Sign up and get first VIP & Platinum access</div>
+        <div class="bottom">
+          <div class="modal">
+            <button
+              id="bottom-link"
+              class="fa fa-paper-plane"
+              onClick={openModal}
+            >
+              <span class="text">SIGN UP NOW</span>
+            </button>
+            <SignUp isOpen={modalIsOpen} closeModal={closeModal}></SignUp>
+          </div>
           <a id="bottom-link" class="fa fa-home" href="#homes">
-          VIEW HOMES</a>
+            <span class="text">VIEW HOMES</span>
+          </a>
           <a id="bottom-link" class="fa fa-building" href="#condos">
-          VIEW CONDOS</a>
-          </div>
+            <span class="text">VIEW CONDOS</span>
+          </a>
         </div>
-        <h1 class="home-title">Featured Pre-Construction Projects</h1>
-          <div class="page-layout">
-            <h2 class="home-title">
-              <a id="homes" href='homes'>Homes Now Selling</a></h2>
-            <div class="home-projects">
-              {homes.map((project) => (
-                <div
-                  class="project-wrapper"
-                  onClick={() => handleClick(project.id)}
-                >
-                  <img class="thumbnail-image" src={project.thumbnail} alt="thumbnail"/>
-                  <div class="overlay">
-                  <h4>{project.project_name}</h4>
-                    <div className="status">{project.status}</div>
-                    <div>{project.price}</div>
-                    <div>
-                      {project.address} {project.city}, {project.province}
-                    </div>
-                  </div>
-                  <figcaption class="project-caption">
-                    <div class="project-name">{project.project_name}</div>
-                    <div>
-                      {project.city}, {project.province}
-                    </div>
-                  </figcaption>
+      </div>
+      <h1 class="home-title">Featured Pre-Construction Projects</h1>
+      <div class="page-layout">
+        <h2 class="home-title">
+          <a id="homes" href="homes">
+            Homes Now Selling
+          </a>
+        </h2>
+        <div class="home-projects">
+          {homes.map((project) => (
+            <div
+              class="project-wrapper"
+              onClick={() => handleClick(project.id)}
+            >
+              <img
+                class="thumbnail-image"
+                src={`/uploads/${project.thumbnail}`}
+                alt="thumbnail"
+              />
+              <div class="overlay">
+                <h4>{project.project_name}</h4>
+                <div className="status">{project.status}</div>
+                <div>{project.price}</div>
+                <div>
+                  {project.address} {project.city}, {project.province}
                 </div>
-              ))}
-            </div>
-            <a id="view-more" class="fa fa-home" href="/homes">VIEW ALL HOMES</a>
-          </div>
-          
-          <div class="page-layout">
-            <h2 class="home-title">
-              <a id="condos" href='condos'>Condos Now Selling</a></h2>
-            <div class="home-projects">
-              {condos.map((project) => (
-                <div
-                  class="project-wrapper"
-                  onClick={() => handleClick(project.id)}
-                >
-                  <img class="thumbnail-image" src={project.thumbnail} alt="thumbnail"/>
-                  <div class="overlay">
-                  <h4>{project.project_name}</h4>
-                    <div className="status">{project.status}</div>
-                    <div>{project.price}</div>
-                    <div>
-                      {project.address} {project.city}, {project.province}
-                    </div>
-                  </div>
-                  <figcaption class="project-caption">
-                    <div class="project-name">{project.project_name}</div>
-                    <div>
-                      {project.city}, {project.province}
-                    </div>
-                  </figcaption>
+              </div>
+              <figcaption class="project-caption">
+                <div class="project-name">{project.project_name}</div>
+                <div>
+                  {project.city}, {project.province}
                 </div>
-              ))}
+              </figcaption>
             </div>
-            <a id="view-more" class="fa fa-building" href="/condos">VIEW ALL CONDOS</a>
-          </div> 
+          ))}
         </div>
+        <a id="view-more" class="fa fa-home" href="/homes">
+          <span class="text">VIEW ALL HOMES</span>
+        </a>
+      </div>
+
+      <div class="page-layout">
+        <h2 class="home-title">
+          <a id="condos" href="condos">
+            Condos Now Selling
+          </a>
+        </h2>
+        <div class="home-projects">
+          {condos.map((project) => (
+            <div
+              class="project-wrapper"
+              onClick={() => handleClick(project.id)}
+            >
+              <img
+                class="thumbnail-image"
+                src={`/uploads/${project.thumbnail}`}
+                alt="thumbnail"
+              />
+              <div class="overlay">
+                <h4>{project.project_name}</h4>
+                <div className="status">{project.status}</div>
+                <div>{project.price}</div>
+                <div>
+                  {project.address} {project.city}, {project.province}
+                </div>
+              </div>
+              <figcaption class="project-caption">
+                <div class="project-name">{project.project_name}</div>
+                <div>
+                  {project.city}, {project.province}
+                </div>
+              </figcaption>
+            </div>
+          ))}
+        </div>
+        <a id="view-more" class="fa fa-building" href="/condos">
+          <span class="text">VIEW ALL CONDOS</span>
+        </a>
+      </div>
+    </div>
   );
 }

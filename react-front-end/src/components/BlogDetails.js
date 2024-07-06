@@ -1,21 +1,21 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom'
 
-export default function Blogs() {
-  const [blogs, setBlogs] = useState([]);
-  const navigate = useNavigate();
-
-  const handleClick = (id) => {
-    navigate(`/blog/${id}`);
-  };
+export default function BlogDetails() {
+  const { id } = useParams();
+  const [blog, setBlog] = useState([]);
 
   useEffect(() => {
     axios.get("/api/blogs").then((result) => {
-      setBlogs(result.data);
+      const correctBlog = result.data.find((blog) => blog.id === Number(id));
+      setBlog(correctBlog);
     });
   });
+
+  const createMarkup = (htmlContent) => {
+    return { __html: htmlContent };
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -44,21 +44,16 @@ export default function Blogs() {
     }
   };
 
+  
   return (
     <div className="page-layout">
-      <h1 class="page-title">Blogs</h1>
-      <div className="blogs">
-      {blogs.map((blog, index) => (
-        <div key={index} className="blog-wrapper" onClick={() => handleClick(blog.id)}>
-          <img src={`/uploads/${blog.blog_thumbnail}`} alt="blog_thumbnail"></img>
-          <div class="blog-display">
-           <h3 onClick={() => handleClick(blog.id)}>{blog.title}</h3>
-           <h5>{blog.category}</h5>
-           <h5>{formatDate(blog.date_created)}</h5>
-           </div>
-        </div>
-       
-      ))}
+      <img src={`/uploads/${blog.blog_thumbnail}`} alt="blog_thumbnail" className="home-image"></img>
+      <h1 class="page-title">{blog.title}</h1>
+      <h3 class="page-title">{blog.category}</h3>
+      <h5 class="page-title">{formatDate(blog.date_created)}</h5>
+
+      <div>
+        <div dangerouslySetInnerHTML={createMarkup(blog.content)}></div>
       </div>
     </div>
   );

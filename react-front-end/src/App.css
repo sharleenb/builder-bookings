@@ -4,6 +4,12 @@
   text-decoration: none;
   margin-right: 30px;
 }
+.text {
+  margin-left: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+}
 
 .fa-brands {
   color: white;
@@ -13,7 +19,6 @@
 
 #email-link {
   margin-left: 10px;
-  
 }
 
 .header-wrapper {
@@ -654,4 +659,47 @@ table tr {
 
 .ql-container {
   width: 55vw;
+}
+
+.blogs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 4em;
+  margin-right: 4em;
+  padding: 0px 30px 0px 45px;
+}
+
+.blog-wrapper {
+  position: relative;
+  border-style: solid;
+  border-color: darkgray;
+  border-width: 1px;
+  margin-right: 15px;
+  margin-bottom: 2em;
+  width: 250px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.blog-wrapper img, .image-container img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.blog-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-display h3 {
+  margin: 0; 
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.blog-display h5 {
+  margin: 0; 
+  padding-bottom: 5px;
 }

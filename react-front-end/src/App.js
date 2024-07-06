@@ -24,6 +24,7 @@ import EditMember from "./components/Admin/EditMember";
 import AddProject from "./components/Admin/AddProject";
 import AddMember from "./components/Admin/AddMember";
 import Blogs from "./components/Blogs";
+import BlogDetails from "./components/BlogDetails";
 import ViewBlogs from "./components/Admin/ViewBlogs";
 import EditBlogs from "./components/Admin/EditBlogs";
 import AddBlog from "./components/Admin/AddBlog";
@@ -87,6 +88,7 @@ function App() {
           <Route exact path="/edit-blogs" element={<ViewBlogs />}></Route>
           <Route exact path="/edit-blog/:id" element={<EditBlogs />}></Route>
           <Route exact path="/add-blog" element={<AddBlog />}></Route>
+          <Route exact path="/blog/:id" element={<BlogDetails />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

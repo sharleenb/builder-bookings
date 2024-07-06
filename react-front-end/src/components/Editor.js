@@ -5,7 +5,6 @@ import React from "react";
 import { useCallback, useMemo, useRef } from "react";
 
 const Editor = ({ value, onChange }) => {
-
   const quill = useRef(null);
 
   // console.log(value);
@@ -34,7 +33,6 @@ const Editor = ({ value, onChange }) => {
       reader.readAsDataURL(file);
     };
   }, []);
-
 
   const modules = useMemo(
     () => ({
@@ -79,6 +77,9 @@ const Editor = ({ value, onChange }) => {
     "clean",
   ];
 
+  // const handleChange = (content, delta, source, editor) => {
+  //   onChange(editor.root.innerHTML); // Pass HTML content to the parent
+  // };
 
   return (
     <div className={styles.wrapper}>

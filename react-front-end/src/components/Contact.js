@@ -29,7 +29,9 @@ export default function Contact() {
           </div>
           <div class="info">
             <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            <span>info@builderbookings</span>
+            <a href="mailto:info@builderbookings.ca">
+              info@builderbookings.ca
+            </a>
           </div>
           
         </div>

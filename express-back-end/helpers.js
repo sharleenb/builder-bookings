@@ -451,7 +451,7 @@ const editBlogDetails = function (values, blogId) {
 const addBlog = function (newData) {
   return new Promise((resolve, reject) => {
     const statement =
-      "INSERT INTO blogs (title, content, date_created) VALUES ($1, $2, $3)";
+      "INSERT INTO blogs (title, content, date_created, blog_thumbnail, category) VALUES ($1, $2, $3, $4, $5)";
     const values = Object.values(newData);
 
     pool

@@ -26,7 +26,7 @@ export default function Header() {
 
         <div className="socials">
           {socials.map((social) => (
-            <a href={social.link_url} class={social.icon}></a>
+            <a href={social.link_url} class={social.icon}> </a>
           ))}
         </div>
       </div>

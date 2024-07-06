@@ -51,6 +51,12 @@ CREATE TABLE blogs (
   date_created DATE
 )
 
+ALTER TABLE blogs
+ADD blog_thumbnail TEXT;
+
+ALTER TABLE blogs
+ADD category TEXT;
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   email VARCHAR (255) NOT NULL,

@@ -27,7 +27,7 @@ export default function EditProject() {
         setThumbnailUrl(res.data.uploadedFile);
         setUpdatedData({
           ...updatedData,
-          ["thumbnail"]: res.data.uploadedFile,
+          "thumbnail": res.data.uploadedFile,
         });
       })
       .catch((error) => {
@@ -48,7 +48,7 @@ export default function EditProject() {
         .then((res) => {
           uploadedPhotos.push(res.data.uploadedFile); // Store the uploaded photo URL
           setPhotos(uploadedPhotos); // Update state with the new array of photo URLs
-          setUpdatedData({ ...updatedData, ["photos"]: uploadedPhotos });
+          setUpdatedData({ ...updatedData, "photos": uploadedPhotos });
         })
         .catch((err) => {
           console.log(err);
@@ -175,7 +175,7 @@ export default function EditProject() {
                         <img
                           key={index}
                           src={`/uploads/${photoUrl}`}
-                          alt={`Photo ${index}`}
+                          alt={`${index}`}
                         />
                       ))}
                     </div>

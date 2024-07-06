@@ -387,6 +387,7 @@ App.put("/api/edit-blog/:id", (req, res) => {
       res.json(result);
     })
     .catch((error) => {
+      console.log(req.body);
       res.status(500).json({ error: "Internal Server Error" });
     });
 });

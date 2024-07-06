@@ -25,7 +25,7 @@ export default function EditMember() {
       .post("/api/upload", formData)
       .then((res) => {
         setThumbnailUrl(res.data.uploadedFile);
-        setUpdatedData({...updatedData, ["thumbnail"]: res.data.uploadedFile})
+        setUpdatedData({...updatedData, "thumbnail": res.data.uploadedFile})
       })
       .catch((error) => {
         console.log("error uploading thumbnail", error);

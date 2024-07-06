@@ -36,7 +36,7 @@ export default function AddMember() {
       .post("/api/upload", photoData)
       .then((res) => {
         setThumbnailUrl(res.data.uploadedFile);
-        setFormData({...formData, ["thumbnail"]: res.data.uploadedFile})
+        setFormData({...formData, "thumbnail": res.data.uploadedFile})
       })
       .catch((error) => {
         console.log("error uploading thumbnail", error);

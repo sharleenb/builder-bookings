@@ -42,7 +42,7 @@ export default function AddProject() {
       .post("/api/upload", photoData)
       .then((res) => {
         setThumbnailUrl(res.data.uploadedFile);
-        setFormValues({ ...formValues, ["thumbnail"]: res.data.uploadedFile });
+        setFormValues({ ...formValues, "thumbnail": res.data.uploadedFile });
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +62,7 @@ export default function AddProject() {
         .then((res) => {
           uploadedPhotos.push(res.data.uploadedFile); // Store the uploaded photo URL
           setPhotos(uploadedPhotos); // Update state with the new array of photo URLs
-          setFormValues({ ...formValues, ["photos"]: uploadedPhotos });
+          setFormValues({ ...formValues, "photos": uploadedPhotos });
         })
         .catch((err) => {
           console.log(err);
@@ -298,7 +298,7 @@ export default function AddProject() {
             <img
               key={index}
               src={`/uploads/${photoUrl}`}
-              alt={`Photo ${index}`}
+              alt={`${index}`}
             />
           ))}
         </div>
